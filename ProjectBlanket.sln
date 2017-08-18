@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{67A7D5AB-E60E-4805-9FC6-C221528BAE48}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serives", "Serives", "{F8796718-D780-47F4-B32D-D964849A0D74}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{75B6575C-4060-408E-AA92-41017CED1464}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBlanket.Web", "src\ProjectBlanket.Web\ProjectBlanket.Web.csproj", "{C5AA3E95-0493-4C97-9154-0F73ED471715}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5AA3E95-0493-4C97-9154-0F73ED471715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5AA3E95-0493-4C97-9154-0F73ED471715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5AA3E95-0493-4C97-9154-0F73ED471715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5AA3E95-0493-4C97-9154-0F73ED471715}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C5AA3E95-0493-4C97-9154-0F73ED471715} = {67A7D5AB-E60E-4805-9FC6-C221528BAE48}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78EF4328-024D-44D5-9AE1-4C4A6C844B3B}
+	EndGlobalSection
+EndGlobal

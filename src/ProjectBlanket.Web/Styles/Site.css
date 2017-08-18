@@ -1,0 +1,30 @@
+﻿.top-navigation > div > .navbar-static-top {
+  height: 80px;
+}
+.navbar-nav > li > a {
+  height: 80px;
+  line-height: 2.5em;
+  font-size: 20px;
+  font-family: 'Segoe UI';
+}
+.side-list {
+  background-color: #eceeee;
+  width: 250px;
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+}
+.side-list > .heading {
+  font-weight: bold;
+  color: #808080;
+  font-size: 20px;
+  font-family: 'Segoe UI';
+  border-bottom: solid 1px #808080;
+  padding: 10px 0 20px 15px;
+}
+.side-list > .heading:after {
+  content: 'x';
+  float: right;
+  padding-right: 10px;
+  cursor: pointer;
+}

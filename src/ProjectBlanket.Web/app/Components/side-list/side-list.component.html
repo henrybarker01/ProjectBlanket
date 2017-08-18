@@ -1,0 +1,9 @@
+﻿<div class="side-list">
+    <h4 class="heading">{{listHeading}}</h4>
+    <ul>
+        <li *ngFor="let item of itemList">
+            <a (click)="routeTo(item.key);">{{item.name}}</a>
+        </li>
+    </ul>
+</div>
+

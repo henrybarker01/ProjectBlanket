@@ -1,0 +1,5 @@
+﻿<side-list [listHeading]="['Quotes List']"
+           [itemList]="quoteList"
+           (result)="ngOnChanges($event)"></side-list>
+
+<div>{{selectedQuoteId}}</div>
