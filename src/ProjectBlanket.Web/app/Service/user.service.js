@@ -20,7 +20,7 @@ var UserService = (function () {
         this._http = _http;
     }
     UserService.prototype.get = function (url) {
-        return this._http.get(url)
+        return this._http.get(url + 'userapi')
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
@@ -28,7 +28,7 @@ var UserService = (function () {
         var body = JSON.stringify(model);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this._http.post(url, body, options)
+        return this._http.post(url + 'userapi', body, options)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
@@ -36,14 +36,22 @@ var UserService = (function () {
         var body = JSON.stringify(model);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this._http.put(url + id, body, options)
+        return this._http.put(url + 'userapi/' + id, body, options)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     UserService.prototype.delete = function (url, id) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this._http.delete(url + id, options)
+        return this._http.delete(url + 'userapi/' + id, options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    UserService.prototype.register = function (url, userRegistrationInfo) {
+        var body = JSON.stringify(userRegistrationInfo);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.post(url + 'Account/Register', body, options)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };

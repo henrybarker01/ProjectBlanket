@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Angular2MVC.DBContext
+namespace ProjectBlanket.WebApi.DBContext
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class UserDBEntities : DbContext
+    public partial class UserBDEntitiesEntities : DbContext
     {
-        public UserDBEntities()
-            : base("name=UserDBEntities")
+        public UserBDEntitiesEntities()
+            : base("name=UserBDEntitiesEntities")
         {
         }
     

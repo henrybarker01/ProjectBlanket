@@ -166,27 +166,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\BaseAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserAPIController.cs" />
-    <Compile Include="DBContext\TblUser.cs">
-      <DependentUpon>UserDBEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\UserDBEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserDBEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\UserDBEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserDBEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBContext\UserDBEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserDBEntities.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +175,7 @@
   <ItemGroup>
     <Content Include="app\app.component.html" />
     <Content Include="app\Components\quotes\quotes.component.html" />
+    <Content Include="app\Components\security\register\register.component.html" />
     <Content Include="app\Components\side-list\side-list.component.html" />
     <Content Include="app\Components\top-navigation\top-navigation.component.html" />
     <Content Include="app\Components\user.component.html" />
@@ -205,26 +186,14 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <TypeScriptCompile Include="app\Components\security\register\register.component.ts" />
+    <TypeScriptCompile Include="app\Model\Security\user-registration-info.ts" />
     <TypeScriptCompile Include="app\Model\SideMenuList\side-list.ts" />
     <Content Include="app\Model\user.js" />
-    <Content Include="App_Data\UserDB.mdf" />
-    <Content Include="App_Data\UserDB_log.ldf">
-      <DependentUpon>UserDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="DBContext\UserDBEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserDBEntities.edmx</DependentUpon>
-      <LastGenOutput>UserDBEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DBContext\UserDBEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserDBEntities.edmx</DependentUpon>
-      <LastGenOutput>UserDBEntities.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -236,13 +205,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="package.json" />
-    <EntityDeploy Include="DBContext\UserDBEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UserDBEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DBContext\UserDBEntities.edmx.diagram">
-      <DependentUpon>UserDBEntities.edmx</DependentUpon>
-    </Content>
     <Content Include="app\Model\user.js.map" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -304,6 +266,8 @@
     <Content Include="Styles\Pages\side-list\side-list.less" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="DBContext\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -358,7 +322,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

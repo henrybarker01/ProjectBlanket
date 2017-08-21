@@ -1,13 +1,16 @@
-﻿using Angular2MVC.DBContext;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
+using ProjectBlanket.WebApi.DBContext;
 
 namespace Angular2MVC.Controllers
 {
+    [AllowAnonymous]
+    [RoutePrefix("api/userapi")]
     public class UserAPIController : BaseAPIController
     {
+        [HttpGet]
         public HttpResponseMessage Get()
         {
             return ToJson(UserDB.TblUsers.AsEnumerable());

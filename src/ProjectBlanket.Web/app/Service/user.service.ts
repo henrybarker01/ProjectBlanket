@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions} from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -10,7 +10,7 @@ export class UserService {
     constructor(private _http: Http) { }
 
     get(url: string): Observable<any> {
-        return this._http.get(url)
+        return this._http.get(url + 'userapi')
             .map((response: Response) => <any>response.json())
             // .do(data => console.log("All: " + JSON.stringify(data)))
             .catch(this.handleError);
@@ -20,7 +20,7 @@ export class UserService {
         let body = JSON.stringify(model);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this._http.post(url, body, options)
+        return this._http.post(url + 'userapi', body, options)
             .map((response: Response) => <any>response.json())
             .catch(this.handleError);
     }
@@ -29,7 +29,7 @@ export class UserService {
         let body = JSON.stringify(model);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this._http.put(url+id, body, options)
+        return this._http.put(url + 'userapi/' + id, body, options)
             .map((response: Response) => <any>response.json())
             .catch(this.handleError);
     }
@@ -37,7 +37,16 @@ export class UserService {
     delete(url: string, id: number): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this._http.delete(url+id,options)
+        return this._http.delete(url + 'userapi/' + id, options)
+            .map((response: Response) => <any>response.json())
+            .catch(this.handleError);
+    }
+
+    register(url: string, userRegistrationInfo: any) {
+        let body = JSON.stringify(userRegistrationInfo);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this._http.post(url + 'Account/Register', body, options)
             .map((response: Response) => <any>response.json())
             .catch(this.handleError);
     }

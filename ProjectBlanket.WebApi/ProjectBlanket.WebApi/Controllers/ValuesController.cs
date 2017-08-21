@@ -7,6 +7,8 @@ using System.Web.Http;
 
 namespace ProjectBlanket.WebApi.Controllers
 {
+    [AllowAnonymous]
+    [RoutePrefix("api/Values")]
     public class ValuesController : ApiController
     {
         // GET api/values

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Angular2MVC.DBContext
+namespace ProjectBlanket.WebApi.DBContext
 {
     using System;
     using System.Collections.Generic;
