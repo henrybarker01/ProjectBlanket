@@ -19,7 +19,11 @@ var RegisterComponent = (function () {
         this._userService = _userService;
     }
     RegisterComponent.prototype.register = function () {
-        var userRegitrationInfo = {};
+        var userRegitrationInfo = {
+            Email: 'henry.barker@live.com',
+            Password: 'P@ssw0rd!@#',
+            ConfirmPassword: 'P@ssw0rd!@#'
+        };
         this._userService.register(global_1.Global.BASE_USER_ENDPOINT, userRegitrationInfo).subscribe(function (data) {
             console.log(data);
         }, function (error) {
