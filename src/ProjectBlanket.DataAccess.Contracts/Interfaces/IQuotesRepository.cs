@@ -7,5 +7,6 @@ namespace ProjectBlanket.DataAccess.Contracts.Interfaces
     public interface IQuotesRepository
     {
         Task<Quote> GetQuoteById(Guid id);
+        Task<Guid> AddQuote(Quote quote);
     }
 }

@@ -3,6 +3,7 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using ProjectBlanket.DataAccess.Module;
+using ProjectBlanket.Service.Module;
 
 namespace ProjectBlanket.WebApi
 {
@@ -26,7 +27,8 @@ namespace ProjectBlanket.WebApi
         public static void RegisterModules(ContainerBuilder builder)
         {
             builder.RegisterModule<ProjectBlanketContextModule>();
-            builder.RegisterModule<RepositoriesModule>();
+            builder.RegisterModule<RepositoriesModule>(); 
+            builder.RegisterModule<ServicesModule>();
         }
     }
 }

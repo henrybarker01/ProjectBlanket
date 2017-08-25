@@ -1,15 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data.Entity;
 using ProjectBlanket.DataAccess.Entities;
 
 namespace ProjectBlanket.DataAccess.DbContext
 {
-    public class ProjectBlanketContext : Microsoft.EntityFrameworkCore.DbContext
+    public class ProjectBlanketContext :   System.Data.Entity.DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public ProjectBlanketContext(): base("ProjectBlanketConnectionString")
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MyDatabase;Trusted_Connection=True;");
+
         }
 
+        
         public DbSet<Quote> Quotes { get; set; }
     }
 }

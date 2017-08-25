@@ -10,10 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var quote_service_1 = require("../../Service/quote.service");
+var global_1 = require("../../Shared/global");
 var forms_1 = require("@angular/forms");
 var QuotesComponent = (function () {
-    function QuotesComponent(fb) {
+    function QuotesComponent(fb, _quoteService) {
         this.fb = fb;
+        this._quoteService = _quoteService;
     }
     QuotesComponent.prototype.ngOnInit = function () {
         this.quoteList = [{
@@ -27,6 +30,12 @@ var QuotesComponent = (function () {
     QuotesComponent.prototype.ngOnChanges = function (val) {
         this.selectedQuoteId = val;
     };
+    QuotesComponent.prototype.addQuote = function () {
+        this._quoteService.post(global_1.Global.BASE_USER_ENDPOINT).subscribe(function (data) {
+        }, function (error) {
+        });
+        ;
+    };
     return QuotesComponent;
 }());
 QuotesComponent = __decorate([
@@ -34,7 +43,7 @@ QuotesComponent = __decorate([
         selector: 'quotes',
         templateUrl: 'app/components/quotes/quotes.component.html'
     }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder])
+    __metadata("design:paramtypes", [forms_1.FormBuilder, quote_service_1.QuoteService])
 ], QuotesComponent);
 exports.QuotesComponent = QuotesComponent;
 //# sourceMappingURL=quotes.component.js.map

@@ -4,16 +4,16 @@ namespace ProjectBlanket.DataAccess.DbContext
 {
     public class LazyDbContextWrapper
     {
-        private readonly Lazy<Microsoft.EntityFrameworkCore.DbContext> _dbContext;
+        private readonly Lazy<System.Data.Entity.DbContext> _dbContext;
 
-        public LazyDbContextWrapper(Lazy<Microsoft.EntityFrameworkCore.DbContext> dbContext)
+        public LazyDbContextWrapper(Lazy<System.Data.Entity.DbContext> dbContext)
         {
             _dbContext = dbContext;
         }
 
         public bool IsDbContextActivated { private get; set; }
 
-        public Microsoft.EntityFrameworkCore.DbContext GetDbContext()
+        public System.Data.Entity.DbContext GetDbContext()
         {
             return IsDbContextActivated ? _dbContext.Value : null;
         }

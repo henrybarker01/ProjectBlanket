@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProjectBlanket.Service</RootNamespace>
     <AssemblyName>ProjectBlanket.Service</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,11 +41,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Module\ServicesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\QuoteService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectBlanket.DataAccess.Contracts\ProjectBlanket.DataAccess.Contracts.csproj">
+      <Project>{B2000744-AE05-45E3-B821-B7BE516B015A}</Project>
+      <Name>ProjectBlanket.DataAccess.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectBlanket.DataAccess.Entities\ProjectBlanket.DataAccess.Entities.csproj">
+      <Project>{1B1580EC-E095-4466-BE5A-9EA3C5CC2441}</Project>
+      <Name>ProjectBlanket.DataAccess.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectBlanket.Service.Contracts\ProjectBlanket.Service.Contracts.csproj">
+      <Project>{66156243-1B53-4123-A01C-03F676C802A4}</Project>
+      <Name>ProjectBlanket.Service.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Module\" />
-    <Folder Include="Services\" />
+    <PackageReference Include="Autofac">
+      <Version>4.6.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
