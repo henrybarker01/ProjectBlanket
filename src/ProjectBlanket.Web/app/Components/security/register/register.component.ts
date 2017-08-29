@@ -1,32 +1,47 @@
-﻿import { Component } from '@angular/core'
+﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { UserService } from '../../../Service/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Global } from '../../../Shared/global';
+
 
 @Component({
-    selector: 'register',
-    templateUrl: 'app/components/security/register/register.component.html'
+    moduleId: module.id,
+    templateUrl: 'register.component.html'
 })
 
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+    model: any = {};
+    loading: boolean = false;
+    registerForm: FormGroup;
+   
 
-    constructor(private fb: FormBuilder, private _userService: UserService) { }
+    constructor(
+        private router: Router,
+        private userService: UserService,
+        private fb: FormBuilder
+        //  private alertService: AlertService
+    ) { }
+
+    ngOnInit() {
+        this.registerForm = this.fb.group({
+            email: ['', Validators.required],
+            password: ['', Validators.required],
+            confirmPassword: ['', Validators.required]
+        });
+    }
 
     register() {
-        let userRegitrationInfo = {
-            Email: 'henry.barker@live.com',
-            Password: 'P@ssw0rd!@#',
-            ConfirmPassword: 'P@ssw0rd!@#'
-        };
-        this._userService.register(Global.BASE_USER_ENDPOINT, userRegitrationInfo).subscribe(
+        this.loading = true;
+        this.userService.create(this.registerForm.value)
+            .subscribe(
             data => {
-                console.log(data);
-
-
+                // this.alertService.success('Registration successful', true);
+                this.router.navigate(['/login']);
             },
             error => {
-                 
-            }
-        );
+                //  this.alertService.error(error);
+                this.loading = false;
+            });
     }
 }

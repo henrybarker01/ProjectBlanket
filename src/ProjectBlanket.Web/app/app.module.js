@@ -23,6 +23,9 @@ var user_service_1 = require("./Service/user.service");
 var side_list_component_1 = require("./components/side-list/side-list.component");
 var register_component_1 = require("./components/security/register/register.component");
 var quote_service_1 = require("./Service/quote.service");
+var authentication_service_1 = require("./Service/authentication.service");
+var login_component_1 = require("./components/security/login/login.component");
+var auth_1 = require("./Helpers/auth");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,8 +34,8 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, http_1.HttpModule, app_routing_1.routing, ng2_bs3_modal_1.Ng2Bs3ModalModule],
-        declarations: [app_component_1.AppComponent, user_component_1.UserComponent, home_component_1.HomeComponent, top_navigation_component_1.TopNavigationComponent, quotes_component_1.QuotesComponent, contract_review_component_1.ContractReviewComponent, side_list_component_1.SideListComponent, register_component_1.RegisterComponent],
-        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, user_service_1.UserService, quote_service_1.QuoteService],
+        declarations: [app_component_1.AppComponent, user_component_1.UserComponent, home_component_1.HomeComponent, top_navigation_component_1.TopNavigationComponent, quotes_component_1.QuotesComponent, contract_review_component_1.ContractReviewComponent, side_list_component_1.SideListComponent, register_component_1.RegisterComponent, login_component_1.LoginComponent],
+        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, user_service_1.UserService, quote_service_1.QuoteService, authentication_service_1.AuthenticationService, auth_1.AuthGuard],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

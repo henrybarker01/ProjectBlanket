@@ -10,33 +10,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var user_service_1 = require("../../../Service/user.service");
 var forms_1 = require("@angular/forms");
-var global_1 = require("../../../Shared/global");
 var RegisterComponent = (function () {
-    function RegisterComponent(fb, _userService) {
+    function RegisterComponent(router, userService, fb
+        //  private alertService: AlertService
+    ) {
+        this.router = router;
+        this.userService = userService;
         this.fb = fb;
-        this._userService = _userService;
+        this.model = {};
+        this.loading = false;
     }
+    RegisterComponent.prototype.ngOnInit = function () {
+        this.registerForm = this.fb.group({
+            email: ['', forms_1.Validators.required],
+            password: ['', forms_1.Validators.required],
+            confirmPassword: ['', forms_1.Validators.required]
+        });
+    };
     RegisterComponent.prototype.register = function () {
-        var userRegitrationInfo = {
-            Email: 'henry.barker@live.com',
-            Password: 'P@ssw0rd!@#',
-            ConfirmPassword: 'P@ssw0rd!@#'
-        };
-        this._userService.register(global_1.Global.BASE_USER_ENDPOINT, userRegitrationInfo).subscribe(function (data) {
-            console.log(data);
+        var _this = this;
+        this.loading = true;
+        this.userService.create(this.registerForm.value)
+            .subscribe(function (data) {
+            // this.alertService.success('Registration successful', true);
+            _this.router.navigate(['/login']);
         }, function (error) {
+            //  this.alertService.error(error);
+            _this.loading = false;
         });
     };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([
     core_1.Component({
-        selector: 'register',
-        templateUrl: 'app/components/security/register/register.component.html'
+        moduleId: module.id,
+        templateUrl: 'register.component.html'
     }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder, user_service_1.UserService])
+    __metadata("design:paramtypes", [router_1.Router,
+        user_service_1.UserService,
+        forms_1.FormBuilder
+        //  private alertService: AlertService
+    ])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

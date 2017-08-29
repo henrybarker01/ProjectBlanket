@@ -175,6 +175,7 @@
   <ItemGroup>
     <Content Include="app\app.component.html" />
     <Content Include="app\Components\quotes\quotes.component.html" />
+    <Content Include="app\Components\security\login\login.component.html" />
     <Content Include="app\Components\security\register\register.component.html" />
     <Content Include="app\Components\side-list\side-list.component.html" />
     <Content Include="app\Components\top-navigation\top-navigation.component.html" />
@@ -186,8 +187,11 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <TypeScriptCompile Include="app\Components\security\login\login.component.ts" />
     <TypeScriptCompile Include="app\Components\security\register\register.component.ts" />
+    <TypeScriptCompile Include="app\Helpers\auth.ts" />
     <TypeScriptCompile Include="app\Model\Security\user-registration-info.ts" />
+    <TypeScriptCompile Include="app\Model\Security\user.ts" />
     <TypeScriptCompile Include="app\Model\SideMenuList\side-list.ts" />
     <Content Include="app\Model\user.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -289,6 +293,7 @@
     <TypeScriptCompile Include="app\Components\user.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Model\user.ts" />
+    <TypeScriptCompile Include="app\Service\authentication.service.ts" />
     <TypeScriptCompile Include="app\Service\quote.service.ts" />
     <TypeScriptCompile Include="app\Service\user.service.ts" />
     <TypeScriptCompile Include="app\Shared\enum.ts" />

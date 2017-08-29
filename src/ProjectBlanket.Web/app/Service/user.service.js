@@ -15,14 +15,32 @@ var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/catch");
+var global_1 = require("../Shared/global");
 var UserService = (function () {
     function UserService(_http) {
         this._http = _http;
     }
+    UserService.prototype.getById = function (id) {
+        return this._http.get('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
+    };
+    UserService.prototype.create = function (user) {
+        return this._http.post(global_1.Global.BASE_USER_ENDPOINT + 'account/register', user, this.jwt()).map(function (response) { return response.json(); });
+    };
+    UserService.prototype.update = function (user) {
+        return this._http.put('/api/users/' + user.id, user, this.jwt()).map(function (response) { return response.json(); });
+    };
     UserService.prototype.get = function (url) {
         return this._http.get(url + 'userapi')
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
+    };
+    UserService.prototype.jwt = function () {
+        // create authorization header with jwt token
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.token) {
+            var headers = new http_1.Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+            return new http_1.RequestOptions({ headers: headers });
+        }
     };
     UserService.prototype.post = function (url, model) {
         var body = JSON.stringify(model);

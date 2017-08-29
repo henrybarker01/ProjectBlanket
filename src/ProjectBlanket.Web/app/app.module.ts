@@ -14,12 +14,15 @@ import { QuotesComponent } from './components/quotes/quotes.component';
 import { UserService } from './Service/user.service';
 import { SideListComponent } from './components/side-list/side-list.component';
 import { RegisterComponent } from './components/security/register/register.component';
-import {QuoteService} from './Service/quote.service';
-
+import { QuoteService } from './Service/quote.service';
+import { AuthenticationService } from './Service/authentication.service';
+import { LoginComponent } from './components/security/login/login.component';
+import { AuthGuard }  from './Helpers/auth';
+ 
 @NgModule({
     imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, Ng2Bs3ModalModule],
-    declarations: [AppComponent, UserComponent, HomeComponent, TopNavigationComponent, QuotesComponent, ContractReviewComponent, SideListComponent, RegisterComponent],
-    providers: [{ provide: APP_BASE_HREF, useValue: '/' }, UserService, QuoteService],
+    declarations: [AppComponent, UserComponent, HomeComponent, TopNavigationComponent, QuotesComponent, ContractReviewComponent, SideListComponent, RegisterComponent, LoginComponent],
+    providers: [{ provide: APP_BASE_HREF, useValue: '/' }, UserService, QuoteService, AuthenticationService, AuthGuard],
     bootstrap: [AppComponent]
 
 })

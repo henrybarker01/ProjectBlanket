@@ -1,5 +1,5 @@
-﻿export interface IUserRegistrationInfo {
-    Email: string,
-    Password: string,
-    ConfirmPassword: string
+﻿export class UserRegistrationInfo {
+    email: string;
+    password: string;
+    confirmPassword: string;
 }

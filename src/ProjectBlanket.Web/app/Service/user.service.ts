@@ -4,16 +4,41 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import { User } from '../Model/Security/user';
+import { UserRegistrationInfo } from '../Model/Security/user-registration-info';
+import { Global } from '../Shared/global';
+ 
 
 @Injectable()
 export class UserService {
     constructor(private _http: Http) { }
+
+    getById(id: number) {
+        return this._http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+    }
+
+    create(user: UserRegistrationInfo) {
+        return this._http.post(Global.BASE_USER_ENDPOINT + 'account/register', user, this.jwt()).map((response: Response) => response.json());
+    }
+
+    update(user: User) {
+        return this._http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
+    }
 
     get(url: string): Observable<any> {
         return this._http.get(url + 'userapi')
             .map((response: Response) => <any>response.json())
             // .do(data => console.log("All: " + JSON.stringify(data)))
             .catch(this.handleError);
+    }
+
+    private jwt() {
+        // create authorization header with jwt token
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.token) {
+            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+            return new RequestOptions({ headers: headers });
+        }
     }
 
     post(url: string, model: any): Observable<any> {

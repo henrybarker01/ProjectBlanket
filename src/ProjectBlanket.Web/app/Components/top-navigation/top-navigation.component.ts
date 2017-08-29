@@ -6,5 +6,7 @@
 })
 
 export class TopNavigationComponent {
-
+     getCanActivate() {
+        return localStorage.getItem('currentUser') ? true : false; 
+    }
 }

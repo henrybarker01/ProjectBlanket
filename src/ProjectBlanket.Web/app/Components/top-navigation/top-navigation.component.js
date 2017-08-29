@@ -10,6 +10,9 @@ var core_1 = require("@angular/core");
 var TopNavigationComponent = (function () {
     function TopNavigationComponent() {
     }
+    TopNavigationComponent.prototype.getCanActivate = function () {
+        return localStorage.getItem('currentUser') ? true : false;
+    };
     return TopNavigationComponent;
 }());
 TopNavigationComponent = __decorate([
