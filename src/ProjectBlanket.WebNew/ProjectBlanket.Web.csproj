@@ -115,6 +115,7 @@
     <Content Include="src\styles\pages\side-list\side-list.less" />
     <Content Include="src\styles\pages\login\login.less" />
     <Content Include="src\styles\pages\side-list\side-list-content.less" />
+    <Content Include="src\styles\pages\dashboard\dashboard.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
