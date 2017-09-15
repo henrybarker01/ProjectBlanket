@@ -1,0 +1,26 @@
+﻿[
+  {
+    "outputFile": "src/styles/pages/top-navigation/top-navigation.css",
+    "inputFile": "src/styles/pages/top-navigation/top-navigation.less"
+  },
+  {
+    "outputFile": "src/styles/pages/index/index.css",
+    "inputFile": "src/styles/pages/index/index.less"
+  },
+  {
+    "outputFile": "src/styles/pages/side-list/side-list.css",
+    "inputFile": "src/styles/pages/side-list/side-list.less"
+  },
+  {
+    "outputFile": "src/styles/Site.css",
+    "inputFile": "src/styles/Site.less"
+  },
+  {
+    "outputFile": "src/Site.css",
+    "inputFile": "src/Site.less"
+  },
+  {
+    "outputFile": "src/styles.css",
+    "inputFile": "src/styles.less"
+  }
+]

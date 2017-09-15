@@ -1,0 +1,15 @@
+﻿.container-fluid {
+  padding: 0;
+}
+.top-navigation > div > .navbar-static-top {
+  height: 80px;
+}
+.navbar-nav > li > a {
+  height: 80px;
+  line-height: 2.5em;
+  font-size: 20px;
+  font-family: 'Segoe UI';
+}
+.navbar-static-top {
+  margin-bottom: 0;
+}

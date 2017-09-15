@@ -1,0 +1,70 @@
+﻿.container-fluid {
+  padding: 0;
+}
+.top-navigation > div > .navbar-static-top {
+  height: 80px;
+}
+.navbar-nav > li > a {
+  height: 80px;
+  line-height: 2.5em;
+  font-size: 20px;
+  font-family: 'Segoe UI';
+}
+.side-list-container {
+  background-color: #eceeee;
+  width: 50px;
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  z-index: 99;
+}
+.side-list-container + div {
+  position: absolute;
+  left: 60px;
+  background-color: aqua;
+  width: 200px;
+  height: 200px;
+}
+.side-list-container:hover {
+  width: 250px;
+}
+.side-list-container:hover .side-list > div {
+  display: block;
+}
+.side-list-container:hover .side-list > span {
+  display: none;
+}
+.side-list-container .side-list > span {
+  display: block;
+  color: #3b3b3c;
+  margin: 15px 0 0 15px;
+  font-size: 20px;
+}
+.side-list-container .side-list.isPinned {
+  width: 250px;
+}
+.side-list-container .side-list > div {
+  display: none;
+}
+.side-list-container .side-list > div.isPinned {
+  display: block;
+}
+.side-list-container .side-list > div > .heading {
+  font-weight: bold;
+  color: #636262;
+  font-size: 20px;
+  font-family: 'Segoe UI';
+  border-bottom: solid 1px #808080;
+  padding: 10px 0 20px 15px;
+}
+.side-list-container .side-list > div > .pin {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #808080;
+}
+.side-list-container .side-list > div > .pin.isPinned {
+  color: #6175d3;
+}

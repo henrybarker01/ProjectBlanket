@@ -1,0 +1,9 @@
+﻿<side-list [listHeading]="['Quotes List']"
+           [itemList]="quoteList"
+           (result)="ngOnChanges($event)"
+           class="side-list-container"></side-list>
+
+<div>{{selectedQuoteId}}</div>
+
+<button style="position: absolute; left:500px" (click)="addQuote();">Add</button>
+

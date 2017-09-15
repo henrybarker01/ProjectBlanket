@@ -1,0 +1,13 @@
+<div class="side-list-container" [ngClass]="{'isPinned': isPinned}">
+  <side-list [listHeading]="['Quotes List']"
+             [itemList]="quoteList"
+             (result)="ngOnChanges($event)"
+             (pinSideList)="pinSideList($event)"></side-list>
+
+</div>
+<div class="page-content" [ngClass]="{'fit-in': isPinned}">
+  Your selected quote: {{selectedQuoteId}}
+  <button style="position: absolute; left:500px" (click)="addQuote();">Add</button>
+</div>
+
+

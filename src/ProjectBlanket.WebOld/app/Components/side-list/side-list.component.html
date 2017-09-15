@@ -1,0 +1,15 @@
+﻿<div class="side-list" [ngClass]="{'isPinned': sideListIsPinned}">
+    <span *ngIf="!sideListIsPinned"><i class="glyphicon glyphicon-menu-hamburger"></i></span>
+    <div [ngClass]="{'isPinned': sideListIsPinned}">
+        <h4 class="heading">{{listHeading}}</h4>
+        <span class="pin" [ngClass]="{'isPinned': sideListIsPinned}" title="close" (click)="pinSideList()"><i class="glyphicon glyphicon-pushpin"></i></span>
+        <form novalidate [formGroup]="sideListForm">
+            <input type="text" class="form-control" placeholder="Search" formControlName="Search" (ngModelChange)="filterList($event)">
+            <ul>
+                <li *ngFor="let item of displayItemList">
+                    <a (click)="routeTo(item.key);">{{item.name}}</a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
