@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SideListComponent implements OnInit {
 
   sideListIsPinned: boolean;
+  selectedValue: string = '';
   sideListForm: FormGroup;
   displayItemList: ISideList[];
 
@@ -33,6 +34,7 @@ export class SideListComponent implements OnInit {
   }
 
   routeTo(key: any) {
+    this.selectedValue = key;
     this.result.emit(key);
   }
 
