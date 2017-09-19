@@ -20,5 +20,8 @@ namespace ProjectBlanket.Service.Services
 
         public async Task<Guid> AddQuote(Quote quote) =>
            await _quoteReporitory.AddQuote(quote);
+
+        public async Task<List<Quote>> List() =>
+            await _quoteReporitory.List();
     }
 }

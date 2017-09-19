@@ -1,9 +1,8 @@
 <div class="dashboard">
   <gridster [options]="options">
     <gridster-item [item]="item" *ngFor="let item of dashboard">
-      <div>
-        <span>Dashboard Widget Content here</span>
+      <div [innerHTML]="item.selector">
       </div>
     </gridster-item>
-  </gridster> 
-</div> 
+  </gridster>
+</div>

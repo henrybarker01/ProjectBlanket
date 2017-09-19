@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using ProjectBlanket.DataAccess.DbContext;
 using ProjectBlanket.DataAccess.Entities;
@@ -26,5 +28,9 @@ namespace ProjectBlanket.DataAccess.Repositories
             return quote.Id;
 
         }
+
+        public async Task<List<Quote>> List() => await
+            _dbContext.Quotes.ToListAsync();
+
     }
 }

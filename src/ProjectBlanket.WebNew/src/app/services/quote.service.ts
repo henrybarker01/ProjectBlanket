@@ -1,9 +1,10 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import {Global} from "../shared/global";
 
 @Injectable()
 export class QuoteService {
@@ -27,6 +28,15 @@ export class QuoteService {
             .map((response: Response) => <any>response)//.json())
             .catch(this.handleError);
     }
+
+  list() {
+    return this._http.get(Global.BASE_USER_ENDPOINT + '/quote/list/');
+    }
+
+   
+
+
+
 
     private handleError(error: Response) {
             console.error(error);

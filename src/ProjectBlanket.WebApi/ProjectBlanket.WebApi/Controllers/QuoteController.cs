@@ -7,10 +7,11 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using ProjectBlanket.WebApi.Models.Quote;
 
 namespace ProjectBlanket.WebApi.Controllers
 {
-     
+
     [RoutePrefix("api/quote")]
     public class QuoteController : BaseApiController
     {
@@ -24,6 +25,12 @@ namespace ProjectBlanket.WebApi.Controllers
         public async Task<Guid> AddQuote([FromBody] Quote quote) =>
            await _quoteService.AddQuote(quote);
 
-
+        [HttpGet, Route("list")]
+        public async Task<List<QuoteListModel>> List() =>
+            (await _quoteService.List()).Select(x => new QuoteListModel()
+            {
+                Id = x.Id,
+                QuoteNumber = x.QuteNumber
+            }).ToList();
     }
 }

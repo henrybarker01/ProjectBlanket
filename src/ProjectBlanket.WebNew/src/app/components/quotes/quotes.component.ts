@@ -18,15 +18,21 @@ export class QuotesComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-    this.quoteList = [
-      {
-        key: 1,
-        name: 'Quote One'
-      }, {
-        key: 2,
-        name: 'Quote Two'
-      }
-    ];
+
+    
+
+
+    this._quoteService.list().subscribe((data) => {
+       
+      this.quoteList = [];
+       data.json().forEach((item) => {
+         this.quoteList.push({
+           id: item.id,
+           description: item.quoteNumber
+         });
+       });
+     });
+
     this.isPinned = localStorage.getItem('sideListIsPinned') === 'true';
   }
 

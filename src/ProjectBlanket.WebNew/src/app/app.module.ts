@@ -17,6 +17,7 @@ import { RegisterComponent } from './components/security/register/register.compo
 import { LoginComponent } from './components/security/login/login.component';
 import { AlertComponent } from './directives/alert/alert.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component'
  
 
 //services
@@ -35,7 +36,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, GridsterModule],//Ng2Bs3ModalModule   
-  declarations: [AppComponent, TopNavigationComponent, QuotesComponent, ContractReviewComponent, SideListComponent, RegisterComponent, LoginComponent, AlertComponent, DashboardComponent],
+  declarations: [AppComponent, TopNavigationComponent, QuotesComponent, ContractReviewComponent, SideListComponent, RegisterComponent, LoginComponent, AlertComponent, DashboardComponent, QuoteWidget],
   providers: [{ provide: APP_BASE_HREF, useValue: '/' },
     {
         provide: HTTP_INTERCEPTORS,
@@ -43,7 +44,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
         multi: true
     },
     UserService, QuoteService, AuthenticationService, AuthGuard, AlertService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [QuoteWidget]
 
 })
 export class AppModule { }

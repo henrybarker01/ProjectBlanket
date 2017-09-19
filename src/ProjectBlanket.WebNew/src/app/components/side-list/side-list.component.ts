@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges, SimpleChanges } from '@angular/core'
 import { ISideList } from '../../models/side-menu-list/side-list'
 import { NgClass } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: 'side-list.component.html'
 })
 
-export class SideListComponent implements OnInit {
+export class SideListComponent implements OnInit, OnChanges {
 
   sideListIsPinned: boolean;
   selectedValue: string = '';
@@ -27,10 +27,16 @@ export class SideListComponent implements OnInit {
       Search: ['']
     });
 
-    this.displayItemList = this.itemList;
+   
     this.sideListIsPinned = localStorage.getItem('sideListIsPinned') === 'true';
     // this.pinSideList.emit(this.sideListIsPinned);
 
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['itemList']) {
+      this.displayItemList = this.itemList;
+    }
   }
 
   routeTo(key: any) {
@@ -46,6 +52,6 @@ export class SideListComponent implements OnInit {
 
   filterList(value: string) {
     this.displayItemList = this.itemList.filter(
-      item => item.name.toUpperCase().includes(value.toUpperCase()));
+      item => item.description.toUpperCase().includes(value.toUpperCase()));
   }
 }

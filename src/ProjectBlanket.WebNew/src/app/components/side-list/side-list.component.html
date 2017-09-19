@@ -6,8 +6,8 @@
         <form class="side-list-form" novalidate [formGroup]="sideListForm">
             <input type="text" class="form-control" placeholder="Search" formControlName="Search" (ngModelChange)="filterList($event)">
             <ul>
-                <li *ngFor="let item of displayItemList" (click)="routeTo(item.key);" [ngClass]="{'is-selected-value': item.key === selectedValue}">
-                    <a >{{item.name}}</a>
+                <li *ngFor="let item of displayItemList" (click)="routeTo(item.id);" [ngClass]="{'is-selected-value': item.id === selectedValue}">
+                    <a >{{item.description}}</a>
                 </li>
             </ul>
         </form>

@@ -1,4 +1,4 @@
-﻿export interface ISideList {
-    key: number;
-    name: string;
+export interface ISideList {
+  id: string;
+  description: string;
 }

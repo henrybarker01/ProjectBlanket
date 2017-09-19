@@ -1,8 +1,11 @@
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
-import { Component, OnInit, OnChanges } from '@angular/core'
+import { Component, OnInit, OnChanges, ComponentFactoryResolver, ViewContainerRef, NgModule, Input, ComponentFactory, ComponentRef, ChangeDetectorRef,  ViewChild,  Output, EventEmitter } from '@angular/core'
 import { QuoteService } from '../../services/quote.service';
 import { Global } from '../../shared/global';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { QuoteWidget } from './widgets/quote-widget/quote-widget.component';
+ 
+import { BrowserModule } from '@angular/platform-browser'
 
 @Component({
   selector: 'dashboard',
@@ -13,10 +16,14 @@ export class DashboardComponent {//implements OnInit {
 
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
+   
+  @ViewChild("dynamicComponentContainer", { read: ViewContainerRef }) container;
+  componentRef: ComponentRef<QuoteWidget>;
 
+  constructor(private fb: FormBuilder, private _quoteService: QuoteService, private componentFactoryResolver: ComponentFactoryResolver,
+    private viewContainerRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
 
-
-  constructor(private fb: FormBuilder, private _quoteService: QuoteService) { }
+  
 
   itemChange(item: any, itemComponent: any) {
     console.info('itemChanged', item, itemComponent);
@@ -26,7 +33,26 @@ export class DashboardComponent {//implements OnInit {
     console.info('itemResized', item, itemComponent);
   }
 
+  //createComponent(type) {
+  //  this.container.clear();
+  //  const factory: ComponentFactory<QuoteWidget> = this.resolver.resolveComponentFactory(QuoteWidget);
+
+  //  this.componentRef = this.container.createComponent(factory);
+
+  //  this.componentRef.instance.type = type;
+
+  //  this.componentRef.instance.output.subscribe(event => console.log(event));
+  //}
+
+  private sayHello() {
+    const factory = this.componentFactoryResolver.resolveComponentFactory(QuoteWidget);
+    const ref = this.viewContainerRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+
   ngOnInit() {
+     
+
     this.options = {
       itemChangeCallback: this.itemChange,
       itemResizeCallback: this.itemResize,
@@ -99,14 +125,20 @@ export class DashboardComponent {//implements OnInit {
     };
 
     this.dashboard = [
-      { cols: 2, rows: 1, y: 0, x: 0 },
-      { cols: 2, rows: 2, y: 0, x: 2 },
+      { selector:'<div #dynamicComponentContainer></div>', cols: 2, rows: 1, y: 0, x: 0 },
+      { selector: '<h1>  test</h1>', cols: 2, rows: 2, y: 0, x: 2 },
       { cols: 2, rows: 1, y: 0, x: 0 },
       { cols: 2, rows: 2, y: 0, x: 2 },
       { cols: 2, rows: 1, y: 0, x: 0 },
       { cols: 2, rows: 2, y: 0, x: 2 }
     ];
+
+    this.dashboard.forEach((item) => {
+    //  createComponent(item.selector);
+    });
   }
+
+
 
   changedOptions() {
     this.options.api.optionsChanged();
