@@ -5,6 +5,7 @@ using Autofac.Integration.WebApi;
 using ProjectBlanket.DataAccess.Module;
 using ProjectBlanket.Emailer.Module;
 using ProjectBlanket.Service.Module;
+using ProjectBlanket.AutoMapper;
 
 namespace ProjectBlanket.WebApi
 {
@@ -27,6 +28,7 @@ namespace ProjectBlanket.WebApi
 
         public static void RegisterModules(ContainerBuilder builder)
         {
+            builder.RegisterModule<AutoMapperConfig>();
             builder.RegisterModule<ProjectBlanketContextModule>();
             builder.RegisterModule<RepositoriesModule>(); 
             builder.RegisterModule<ServicesModule>();

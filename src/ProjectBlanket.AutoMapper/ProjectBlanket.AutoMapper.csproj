@@ -47,13 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="MappingProfiles\EquipmentMappingProfile.cs" />
+    <Compile Include="MappingProfiles\QuoteMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MappingProfiles\" />
+    <ProjectReference Include="..\ProjectBlanket.DataAccess.Entities\ProjectBlanket.DataAccess.Entities.csproj">
+      <Project>{1B1580EC-E095-4466-BE5A-9EA3C5CC2441}</Project>
+      <Name>ProjectBlanket.DataAccess.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectBlanket.Service.Contracts\ProjectBlanket.Service.Contracts.csproj">
+      <Project>{66156243-1b53-4123-a01c-03f676c802a4}</Project>
+      <Name>ProjectBlanket.Service.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

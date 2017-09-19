@@ -4,6 +4,6 @@ namespace ProjectBlanket.DataAccess.Entities
 {
     public class Quote : EntityBase
     {
-        public int QuteNumber { get; set; }
+        public string QuoteNumber { get; set; }
     }
 }

@@ -6,6 +6,8 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { GridsterModule } from 'angular-gridster2';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdCheckboxModule } from '@angular/material';
 
 //components
 import { AppComponent } from './app.component';
@@ -35,7 +37,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
-  imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, GridsterModule],//Ng2Bs3ModalModule   
+  imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, GridsterModule, BrowserAnimationsModule, MdButtonModule, MdCheckboxModule],//Ng2Bs3ModalModule   
   declarations: [AppComponent, TopNavigationComponent, QuotesComponent, ContractReviewComponent, SideListComponent, RegisterComponent, LoginComponent, AlertComponent, DashboardComponent, QuoteWidget],
   providers: [{ provide: APP_BASE_HREF, useValue: '/' },
     {

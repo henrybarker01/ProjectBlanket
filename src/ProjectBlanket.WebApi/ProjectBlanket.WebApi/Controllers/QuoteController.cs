@@ -7,7 +7,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using ProjectBlanket.WebApi.Models.Quote;
+using AutoMapper;
+using ProjectBlanket.Service.Contracts.Models.Quote;
 
 namespace ProjectBlanket.WebApi.Controllers
 {
@@ -16,7 +17,7 @@ namespace ProjectBlanket.WebApi.Controllers
     public class QuoteController : BaseApiController
     {
         private readonly IQuoteService _quoteService;
-        public QuoteController(IQuoteService quoteService)
+        public QuoteController(IQuoteService quoteService, IMapper mapper) : base(mapper)
         {
             _quoteService = quoteService;
         }
@@ -26,11 +27,11 @@ namespace ProjectBlanket.WebApi.Controllers
            await _quoteService.AddQuote(quote);
 
         [HttpGet, Route("list")]
-        public async Task<List<QuoteListModel>> List() =>
-            (await _quoteService.List()).Select(x => new QuoteListModel()
-            {
-                Id = x.Id,
-                QuoteNumber = x.QuteNumber
-            }).ToList();
+        public async Task<List<QuoteListModel>> List()
+        {
+            var result = await _quoteService.List();
+            return Map<List<QuoteListModel>>(result);
+
+        }
     }
 }

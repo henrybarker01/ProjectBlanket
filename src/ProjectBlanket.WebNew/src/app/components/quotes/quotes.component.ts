@@ -18,12 +18,7 @@ export class QuotesComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-
-    
-
-
     this._quoteService.list().subscribe((data) => {
-       
       this.quoteList = [];
        data.json().forEach((item) => {
          this.quoteList.push({

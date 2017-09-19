@@ -7,13 +7,13 @@ namespace ProjectBlanket.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-beta1-60406")]
-    public sealed partial class updateDBToSomeShit : IMigrationMetadata
+    public sealed partial class FixQuoteNumber : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateDBToSomeShit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixQuoteNumber));
         
         string IMigrationMetadata.Id
         {
-            get { return "201708250504565_updateDBToSomeShit"; }
+            get { return "201709192004294_FixQuoteNumber"; }
         }
         
         string IMigrationMetadata.Source
