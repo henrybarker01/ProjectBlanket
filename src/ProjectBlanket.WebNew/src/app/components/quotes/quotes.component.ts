@@ -13,6 +13,7 @@ export class QuotesComponent implements OnInit, OnChanges {
   quoteList: object[];
   selectedQuoteId: number;
   isPinned: boolean = false;
+  quoteForm: FormGroup;
 
   constructor(private fb: FormBuilder, private _quoteService: QuoteService) { }
 
@@ -29,6 +30,12 @@ export class QuotesComponent implements OnInit, OnChanges {
      });
 
     this.isPinned = localStorage.getItem('sideListIsPinned') === 'true';
+
+    this.quoteForm = this.fb.group({
+      quoteNumber: [''],
+      //password: ['', Validators.required],
+      //confirmPassword: ['', Validators.required]
+    });
   }
 
   ngOnChanges(val: any) {

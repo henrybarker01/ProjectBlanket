@@ -1,0 +1,32 @@
+<div class="side-list-container" [ngClass]="{'isPinned': isPinned}">
+  <side-list [listHeading]="['Equipment List']"
+             [itemList]="equipmentList"
+             (result)="ngOnChanges($event)"
+             (pinSideList)="pinSideList($event)"></side-list>
+
+</div>
+<div class="page-content" [ngClass]="{'fit-in': isPinned}">
+  <form name="form" (ngSubmit)="equipmentForm.valid && sumbit()" [formGroup]="equipmentForm" novalidate>
+    <md-form-field class="example-full-width">
+      <input mdInput placeholder="Name"  formControlName="name" required>
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input mdInput placeholder="Description" formControlName="description" required/>
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input mdInput placeholder="Model" formControlName="model" required/>
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input mdInput placeholder="Serial Number" formControlName="serialNumber" required/>
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input type="number" mdInput placeholder="Initial Cost" formControlName="initialCost" required/>
+    </md-form-field>
+    <md-checkbox class="example-margin" formControlName="isCalibrated">
+      Is Calibrated
+    </md-checkbox>
+    <div class="button-row">
+      <button md-raised-button color="primary">Save</button>
+    </div>
+  </form>
+</div>

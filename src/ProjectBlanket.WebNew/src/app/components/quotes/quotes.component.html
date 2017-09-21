@@ -6,8 +6,22 @@
 
 </div>
 <div class="page-content" [ngClass]="{'fit-in': isPinned}">
-  Your selected quote: {{selectedQuoteId}}
-  <button style="position: absolute; left:500px" (click)="addQuote();">Add</button>
+  <form name="form" (ngSubmit)="registerForm.valid && sumbit()" [formGroup]="quoteForm" novalidate>
+
+    <md-form-field class="example-full-width">
+      <textarea mdInput placeholder="Address 2"></textarea>
+    </md-form-field>
+
+
+
+
+
+    <!--<div class="form-group" [ngClass]="{ 'has-error': registerForm.submitted && !email.valid }">
+      <label for="email">Email Address</label>
+      <input type="text" class="form-control" name="email" id="email" formControlName="email" required/>
+      <div *ngIf="registerForm.submitted && !email.valid" class="help-block">First Name is required</div>
+    </div>-->
+  </form>
 </div>
 
 

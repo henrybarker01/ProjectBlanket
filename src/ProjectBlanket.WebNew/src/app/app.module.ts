@@ -8,6 +8,7 @@ import { routing } from './app.routing';
 import { GridsterModule } from 'angular-gridster2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule } from '@angular/material';
+import { MdInputModule } from '@angular/material';
 
 //components
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { LoginComponent } from './components/security/login/login.component';
 import { AlertComponent } from './directives/alert/alert.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component'
+import { EquipmentComponent } from './components/equipment/equipment.component'
  
 
 //services
@@ -37,8 +39,18 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
-  imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, GridsterModule, BrowserAnimationsModule, MdButtonModule, MdCheckboxModule],//Ng2Bs3ModalModule   
-  declarations: [AppComponent, TopNavigationComponent, QuotesComponent, ContractReviewComponent, SideListComponent, RegisterComponent, LoginComponent, AlertComponent, DashboardComponent, QuoteWidget],
+  imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, GridsterModule, BrowserAnimationsModule, MdButtonModule, MdCheckboxModule, MdInputModule],//Ng2Bs3ModalModule   
+  declarations: [AppComponent,
+    TopNavigationComponent,
+    QuotesComponent,
+    ContractReviewComponent,
+    SideListComponent,
+    RegisterComponent,
+    LoginComponent,
+    AlertComponent,
+    DashboardComponent,
+    QuoteWidget,
+    EquipmentComponent],
   providers: [{ provide: APP_BASE_HREF, useValue: '/' },
     {
         provide: HTTP_INTERCEPTORS,

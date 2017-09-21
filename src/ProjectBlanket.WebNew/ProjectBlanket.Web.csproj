@@ -79,6 +79,7 @@
     </None>
     <None Include="packages.config" />
     <Content Include="src\app\components\dashboard\widgets\quote-widget\quote-widget.component.html" />
+    <Content Include="src\app\components\equipment\equipment.component.html" />
     <Content Include="src\assets\.gitkeep" />
     <Content Include="src\assets\images\2ade2df3-b111-475d-89ab-3a9a01f418d1-1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -156,6 +157,7 @@
     <TypeScriptCompile Include="src\app\components\contract-review\contract-review.component.ts" />
     <TypeScriptCompile Include="src\app\components\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="src\app\components\dashboard\widgets\quote-widget\quote-widget.component.ts" />
+    <TypeScriptCompile Include="src\app\components\equipment\equipment.component.ts" />
     <TypeScriptCompile Include="src\app\components\home.component.ts" />
     <TypeScriptCompile Include="src\app\components\quotes\quotes.component.ts" />
     <TypeScriptCompile Include="src\app\components\security\login\login.component.ts" />
