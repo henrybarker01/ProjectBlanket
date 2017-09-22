@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AutoMapper;
+using ProjectBlanket.DataAccess.Entities.Entities;
 using ProjectBlanket.Service.Contracts.Interfaces;
+using ProjectBlanket.Service.Contracts.Models.Equipment;
 using ProjectBlanket.WebApi.Models.Equipment;
 
 namespace ProjectBlanket.WebApi.Controllers
@@ -27,5 +26,9 @@ namespace ProjectBlanket.WebApi.Controllers
             var result = await _equipmentService.List();
             return Map<List<EquipmentListModel>>(result);
         }
+
+        [HttpPut, Route("add")]
+        public async Task<Guid> Add(EquipmentModel equipmentModel) =>
+            (await _equipmentService.Add(Map<Equipment>(equipmentModel))).Id;
     }
 }

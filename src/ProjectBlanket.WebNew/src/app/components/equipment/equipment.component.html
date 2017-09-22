@@ -25,6 +25,17 @@
     <md-checkbox class="example-margin" formControlName="isCalibrated">
       Is Calibrated
     </md-checkbox>
+
+    <br />
+    <br/>
+
+    <h3>Calibration</h3>
+    <br/>
+
+    <input type="file" (change)="getFiles($event)" placeholder="Upload file..." />
+    <button type="button" (click)="upload()">Upload</button>
+
+
     <div class="button-row">
       <button md-raised-button color="primary">Save</button>
     </div>

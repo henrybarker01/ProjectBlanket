@@ -4,35 +4,27 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import { Global } from "../shared/global";
+import { Global } from '../shared/global';
+import {EquipmentModel} from '../models/equipment/equipment';
 
 @Injectable()
-export class QuoteService {
-
+export class EquipmentService {
   constructor(private _http: Http) { }
 
-  get(url: string): Observable<any> {
-    return this._http.get(url + 'userapi')
-      .map((response: Response) => <any>response.json())
-      // .do(data => console.log("All: " + JSON.stringify(data)))
-      .catch(this.handleError);
-  }
-
-  post(url: string): Observable<any> {
-    let body = {
-      QuteNumber: 123
-    };
-    //JSON.stringify(model);
+  put(model: EquipmentModel): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this._http.post(url + 'quote/addQuote', body, options)
-      .map((response: Response) => <any>response)//.json())
+    return this._http.put(Global.BASE_USER_ENDPOINT + 'equipment/add', JSON.stringify(model), options)
+      .map((response: Response) => <any>response.json())
       .catch(this.handleError);
   }
 
+ 
+
   list() {
-    return this._http.get(Global.BASE_USER_ENDPOINT + '/quote/list/');
+    return this._http.get(Global.BASE_USER_ENDPOINT + '/equipment/list/');
   }
+  
 
   private handleError(error: Response) {
     console.error(error);

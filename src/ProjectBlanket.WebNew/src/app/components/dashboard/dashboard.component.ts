@@ -3,7 +3,7 @@ import { Component, OnInit, OnChanges, ComponentFactoryResolver, ViewContainerRe
 import { QuoteService } from '../../services/quote.service';
 import { Global } from '../../shared/global';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { QuoteWidget } from './widgets/quote-widget/quote-widget.component';
+//import { QuoteWidget } from './widgets/quote-widget/quote-widget.component';
  
 import { BrowserModule } from '@angular/platform-browser'
 
@@ -18,7 +18,7 @@ export class DashboardComponent {//implements OnInit {
   dashboard: Array<GridsterItem>;
    
   @ViewChild("dynamicComponentContainer", { read: ViewContainerRef }) container;
-  componentRef: ComponentRef<QuoteWidget>;
+  //componentRef: ComponentRef<QuoteWidget>;
 
   constructor(private fb: FormBuilder, private _quoteService: QuoteService, private componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
@@ -44,11 +44,11 @@ export class DashboardComponent {//implements OnInit {
   //  this.componentRef.instance.output.subscribe(event => console.log(event));
   //}
 
-  private sayHello() {
-    const factory = this.componentFactoryResolver.resolveComponentFactory(QuoteWidget);
-    const ref = this.viewContainerRef.createComponent(factory);
-    ref.changeDetectorRef.detectChanges();
-  }
+  //private sayHello() {
+  //  const factory = this.componentFactoryResolver.resolveComponentFactory(QuoteWidget);
+  //  const ref = this.viewContainerRef.createComponent(factory);
+  //  ref.changeDetectorRef.detectChanges();
+  //}
 
   ngOnInit() {
      
@@ -125,7 +125,7 @@ export class DashboardComponent {//implements OnInit {
     };
 
     this.dashboard = [
-      { selector:'<div #dynamicComponentContainer></div>', cols: 2, rows: 1, y: 0, x: 0 },
+      { selector:'<div SomeDodgyShit><h1></h1> <SomeDodgyShit></SomeDodgyShit>dynamicDirective</div>', cols: 2, rows: 1, y: 0, x: 0 },
       { selector: '<h1>  test</h1>', cols: 2, rows: 2, y: 0, x: 2 },
       { cols: 2, rows: 1, y: 0, x: 0 },
       { cols: 2, rows: 2, y: 0, x: 2 },

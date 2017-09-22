@@ -167,12 +167,14 @@
     <TypeScriptCompile Include="src\app\directives\alert\alert.component.ts" />
     <TypeScriptCompile Include="src\app\helpers\auth.ts" />
     <TypeScriptCompile Include="src\app\interceptors\authentication.inteceptor.ts" />
+    <TypeScriptCompile Include="src\app\models\equipment\equipment.ts" />
     <TypeScriptCompile Include="src\app\models\security\user-registration-info.ts" />
     <TypeScriptCompile Include="src\app\models\security\user.ts" />
     <TypeScriptCompile Include="src\app\models\side-menu-list\side-list.ts" />
     <TypeScriptCompile Include="src\app\models\user.ts" />
     <TypeScriptCompile Include="src\app\services\alert.service.ts" />
     <TypeScriptCompile Include="src\app\services\authentication.service.ts" />
+    <TypeScriptCompile Include="src\app\services\equipment.service.ts" />
     <TypeScriptCompile Include="src\app\services\quote.service.ts" />
     <TypeScriptCompile Include="src\app\services\user.service.ts" />
     <TypeScriptCompile Include="src\app\shared\enum.ts" />

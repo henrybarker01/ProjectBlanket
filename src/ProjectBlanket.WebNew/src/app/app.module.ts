@@ -20,7 +20,7 @@ import { RegisterComponent } from './components/security/register/register.compo
 import { LoginComponent } from './components/security/login/login.component';
 import { AlertComponent } from './directives/alert/alert.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component'
+//import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component'
 import { EquipmentComponent } from './components/equipment/equipment.component'
  
 
@@ -29,6 +29,7 @@ import { UserService } from './services/user.service';
 import { AlertService } from './services/alert.service';
 import { QuoteService } from './services/quote.service';
 import { AuthenticationService } from './services/authentication.service';
+import { EquipmentService } from './services/equipment.service';
 
 //helpers
 import { AuthGuard } from './helpers/auth';
@@ -37,9 +38,11 @@ import { AuthGuard } from './helpers/auth';
 import { AuthInterceptor } from './interceptors/authentication.inteceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { CardHoverDirective } from './components/dashboard/widgets/quote-widget/quote-widget.component';
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, GridsterModule, BrowserAnimationsModule, MdButtonModule, MdCheckboxModule, MdInputModule],//Ng2Bs3ModalModule   
+
   declarations: [AppComponent,
     TopNavigationComponent,
     QuotesComponent,
@@ -49,17 +52,26 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     LoginComponent,
     AlertComponent,
     DashboardComponent,
-    QuoteWidget,
+    //QuoteWidget,
+    CardHoverDirective,
     EquipmentComponent],
+
   providers: [{ provide: APP_BASE_HREF, useValue: '/' },
     {
         provide: HTTP_INTERCEPTORS,
         useClass: AuthInterceptor,
         multi: true
     },
-    UserService, QuoteService, AuthenticationService, AuthGuard, AlertService],
+    UserService,
+    QuoteService,
+    AuthenticationService,
+    AuthGuard,
+    AlertService,
+    EquipmentService],
+
+
   bootstrap: [AppComponent],
-  entryComponents: [QuoteWidget]
+  //entryComponents: [QuoteWidget]
 
 })
 export class AppModule { }

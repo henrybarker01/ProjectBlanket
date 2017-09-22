@@ -8,6 +8,7 @@ namespace ProjectBlanket.DataAccess.Module
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<QuotesRepository>().AsImplementedInterfaces();
+            builder.RegisterType<EquipmentRepository>().AsImplementedInterfaces();
         }
     }
 }

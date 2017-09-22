@@ -19,9 +19,6 @@ export class UserService {
 
     create(user: UserRegistrationInfo) {
          return this._http.post(Global.BASE_USER_ENDPOINT + 'account/register', user);
-
-       
-
     }
 
     update(user: User) {
