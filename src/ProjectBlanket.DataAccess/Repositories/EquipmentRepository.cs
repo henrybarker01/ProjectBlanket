@@ -23,11 +23,10 @@ namespace ProjectBlanket.DataAccess.Repositories
 
         public async Task<Equipment> Add(Equipment equipment)
         {
-            equipment.Calibration = new Calibration()
+            foreach (var calibration in equipment.CalibrationList)
             {
-                DateCalibrated = DateTime.Now
-            };
-          //  _dbContext.Calibration.Add(equipment.Calibration);
+                _dbContext.Calibration.Add(calibration);
+            }
             _dbContext.Equipment.Add(equipment);
             await _dbContext.SaveChangesAsync();
             return equipment;

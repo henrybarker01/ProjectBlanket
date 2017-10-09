@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using ProjectBlanket.DataAccess.Core.Entities;
 
@@ -14,8 +15,7 @@ namespace ProjectBlanket.DataAccess.Entities.Entities
         public bool IsCalibrated { get; set; }
 
         public Guid CalibrationId { get; set; }
-
-        [ForeignKey("CalibrationId")]
-        public Calibration Calibration { get; set; }
+         
+        public IList<Calibration> CalibrationList { get; set; }
     }
 }

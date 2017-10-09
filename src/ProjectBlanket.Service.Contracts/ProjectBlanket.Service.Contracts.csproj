@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IEquipmentService.cs" />
     <Compile Include="Interfaces\IQuoteService.cs" />
+    <Compile Include="Models\Equipment\CalibrationModel.cs" />
     <Compile Include="Models\Equipment\EquipmentListModel.cs" />
     <Compile Include="Models\Equipment\EquipmentModel.cs" />
     <Compile Include="Models\Quote\QuoteModel.cs" />

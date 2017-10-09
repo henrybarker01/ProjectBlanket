@@ -1,3 +1,5 @@
+import {CalibrationModel} from "./calibration";
+
 export class EquipmentModel {
   id: string;
   name: string;
@@ -6,5 +8,5 @@ export class EquipmentModel {
   serialNumber: string;
   initialCost: number;
   isCalibrated: boolean;
-  calibrationId: string;
+  calibrationList: CalibrationModel[];
 }

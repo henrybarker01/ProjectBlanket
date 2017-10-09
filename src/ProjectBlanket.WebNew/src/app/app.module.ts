@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 //import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
@@ -9,7 +9,7 @@ import { GridsterModule } from 'angular-gridster2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
-import {  MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import { MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 
 //components
 import { AppComponent } from './app.component';
@@ -23,7 +23,7 @@ import { AlertComponent } from './directives/alert/alert.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 //import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component'
 import { EquipmentComponent } from './components/equipment/equipment.component'
- 
+
 
 //services
 import { UserService } from './services/user.service';
@@ -42,7 +42,17 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component';
 
 @NgModule({
-  imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, GridsterModule, BrowserAnimationsModule, MdButtonModule, MdCheckboxModule, MdInputModule,  MdDatepickerModule, MdNativeDateModule],//Ng2Bs3ModalModule   
+  imports: [BrowserModule,
+    ReactiveFormsModule,
+    HttpModule, routing,
+    GridsterModule,
+    BrowserAnimationsModule,
+    MdButtonModule,
+    MdCheckboxModule,
+    MdInputModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
+    FormsModule],//Ng2Bs3ModalModule   
 
   declarations: [AppComponent,
     TopNavigationComponent,
@@ -54,15 +64,16 @@ import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-w
     AlertComponent,
     DashboardComponent,
     QuoteWidget,
-   // CardHoverDirective,
+
+    // CardHoverDirective,
     EquipmentComponent],
 
   providers: [{ provide: APP_BASE_HREF, useValue: '/' },
-    {
-        provide: HTTP_INTERCEPTORS,
-        useClass: AuthInterceptor,
-        multi: true
-    },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
     UserService,
     QuoteService,
     AuthenticationService,

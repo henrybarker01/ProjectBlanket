@@ -1,4 +1,6 @@
 export class CalibrationModel {
   id: string;
-  calibrationCertificate:[""];
+  calibrationCertificate: [""];
+  calibrationDate: Date;
+  calibrationDue: Date;
 }

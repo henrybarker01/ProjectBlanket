@@ -6,11 +6,11 @@
 
 </div>
 <div class="page-content" [ngClass]="{'fit-in': isPinned}">
-  <form name="form" (ngSubmit)="equipmentForm.valid && sumbit()" [formGroup]="equipmentForm" novalidate>
+  <form name="form" (ngSubmit)="sumbit()"  novalidate><!--[formGroup]="equipmentForm"-->
     <md-form-field class="example-full-width">
-      <input mdInput placeholder="Name"  formControlName="name" required>
+      <input mdInput placeholder="Name" [(ngModel)]="equipment.name" [ngModelOptions]="{standalone: true}" required><!--formControlName="name"-->
     </md-form-field>
-    <md-form-field class="example-full-width">
+    <!--<md-form-field class="example-full-width">
       <input mdInput placeholder="Description" formControlName="description" required/>
     </md-form-field>
     <md-form-field class="example-full-width">
@@ -24,7 +24,7 @@
     </md-form-field>
     <md-checkbox class="example-margin" formControlName="isCalibrated">
       Is Calibrated
-    </md-checkbox>
+    </md-checkbox>-->
 
     <br />
     <br/>
@@ -33,24 +33,24 @@
     <br/>
 
     
-    <button type="button"(click)="addCalibration()">Add Calibration</button>
+    <button type="button" (click)="addCalibration()">Add Calibration</button>
     <ul>
-      <li *ngFor="let calibration of calibrationList">
+      <li *ngFor="let calibration of equipment.calibrationList">
 
         <md-form-field>
-          <input mdInput [mdDatepicker]="calibrationDate" placeholder="Calibration Date" required>
+          <input mdInput [mdDatepicker]="calibrationDate" placeholder="Calibration Date" [(ngModel)]="calibration.calibrationDate" [ngModelOptions]="{standalone: true}" required>
           <md-datepicker-toggle mdSuffix [for]="calibrationDate"></md-datepicker-toggle>
           <md-datepicker #calibrationDate></md-datepicker>
         </md-form-field>
 
         <md-form-field>
-          <input mdInput [mdDatepicker]="calibrationDue" placeholder="Calibration Due" required>
+          <input mdInput [mdDatepicker]="calibrationDue" placeholder="Calibration Due"  [(ngModel)]="calibration.calibrationDue" [ngModelOptions]="{standalone: true}" required>
           <md-datepicker-toggle mdSuffix [for]="calibrationDue"></md-datepicker-toggle>
           <md-datepicker #calibrationDue></md-datepicker>
         </md-form-field>
 
         <input type="file" (change)="getFiles($event, calibration)" placeholder="Upload file..." />
-        
+
 
       </li>
     </ul>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ProjectBlanket.Service.Contracts.Models.Equipment
 {
@@ -12,7 +13,9 @@ namespace ProjectBlanket.Service.Contracts.Models.Equipment
         public decimal InitialCost { get; set; }
         public bool IsCalibrated { get; set; }
         public Guid CalibrationId { get; set; }
-      
-       // public Calibration Calibration { get; set; }
+
+        public IList<CalibrationModel> CalibrationList { get; set; }
+
+        
     }
 }

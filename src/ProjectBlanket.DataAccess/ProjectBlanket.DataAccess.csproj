@@ -134,6 +134,14 @@
     <Compile Include="Migrations\201709192004294_FixQuoteNumber.Designer.cs">
       <DependentUpon>201709192004294_FixQuoteNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710091756161_EquipmentAndCalibrations.cs" />
+    <Compile Include="Migrations\201710091756161_EquipmentAndCalibrations.Designer.cs">
+      <DependentUpon>201710091756161_EquipmentAndCalibrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091846024_UpdateCalibrationAddName.cs" />
+    <Compile Include="Migrations\201710091846024_UpdateCalibrationAddName.Designer.cs">
+      <DependentUpon>201710091846024_UpdateCalibrationAddName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Module\ProjectBlanketContextModule.cs" />
     <Compile Include="Module\RepositoriesModule.cs" />
@@ -182,6 +190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709192004294_FixQuoteNumber.resx">
       <DependentUpon>201709192004294_FixQuoteNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091756161_EquipmentAndCalibrations.resx">
+      <DependentUpon>201710091756161_EquipmentAndCalibrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091846024_UpdateCalibrationAddName.resx">
+      <DependentUpon>201710091846024_UpdateCalibrationAddName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

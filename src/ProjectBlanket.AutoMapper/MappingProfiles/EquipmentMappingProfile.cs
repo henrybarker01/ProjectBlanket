@@ -5,13 +5,15 @@ using ProjectBlanket.Service.Contracts.Models.Equipment;
 
 namespace ProjectBlanket.AutoMapper.MappingProfiles
 {
-  public  class EquipmentMappingProfile : Profile
+    public class EquipmentMappingProfile : Profile
     {
         public EquipmentMappingProfile()
         {
             CreateMap<Equipment, EquipmentListModel>();
             CreateMap<Equipment, EquipmentModel>();
             CreateMap<EquipmentModel, Equipment>();
+            CreateMap<Calibration, CalibrationModel>();
+            CreateMap<CalibrationModel, Calibration>();
         }
     }
 }
