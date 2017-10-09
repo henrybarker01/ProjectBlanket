@@ -9,6 +9,7 @@ import { GridsterModule } from 'angular-gridster2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
+import {  MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 
 //components
 import { AppComponent } from './app.component';
@@ -38,10 +39,10 @@ import { AuthGuard } from './helpers/auth';
 import { AuthInterceptor } from './interceptors/authentication.inteceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { CardHoverDirective } from './components/dashboard/widgets/quote-widget/quote-widget.component';
+import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component';
 
 @NgModule({
-  imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, GridsterModule, BrowserAnimationsModule, MdButtonModule, MdCheckboxModule, MdInputModule],//Ng2Bs3ModalModule   
+  imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, GridsterModule, BrowserAnimationsModule, MdButtonModule, MdCheckboxModule, MdInputModule,  MdDatepickerModule, MdNativeDateModule],//Ng2Bs3ModalModule   
 
   declarations: [AppComponent,
     TopNavigationComponent,
@@ -52,8 +53,8 @@ import { CardHoverDirective } from './components/dashboard/widgets/quote-widget/
     LoginComponent,
     AlertComponent,
     DashboardComponent,
-    //QuoteWidget,
-    CardHoverDirective,
+    QuoteWidget,
+   // CardHoverDirective,
     EquipmentComponent],
 
   providers: [{ provide: APP_BASE_HREF, useValue: '/' },

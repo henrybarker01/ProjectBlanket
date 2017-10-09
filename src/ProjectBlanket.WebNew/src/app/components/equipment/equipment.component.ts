@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EquipmentService } from '../../services/equipment.service';
 import { AlertService } from '../../services/alert.service';
- 
+import { CalibrationModel } from "../../models/equipment/calibration";
 
 @Component({
   selector: 'equipment',
@@ -10,7 +10,7 @@ import { AlertService } from '../../services/alert.service';
 })
 
 export class EquipmentComponent implements OnInit {
-   
+
   constructor(private fb: FormBuilder,
     private _equipmentService: EquipmentService,
     private alertService: AlertService) { }
@@ -19,7 +19,8 @@ export class EquipmentComponent implements OnInit {
   isPinned: boolean = false;
   equipmentList: object[];
   fileInput: File;
-  files: FileList; 
+  files: FileList;
+  
 
   ngOnInit(): void {
     this.equipmentForm = this.fb.group({
@@ -29,8 +30,8 @@ export class EquipmentComponent implements OnInit {
       model: ['', Validators.required],
       serialNumber: ['', Validators.required],
       initialCost: ['', Validators.required],
-      isCalibrated: [false, Validators.required],
-      calibrationCertificate:['']
+      isCalibrated: [false, Validators.required]
+      //calibrationList: CalibrationModel[]
     });
 
     this._equipmentService.list().subscribe((data) => {
@@ -44,6 +45,13 @@ export class EquipmentComponent implements OnInit {
     });
 
     this.isPinned = localStorage.getItem('sideListIsPinned') === 'true';
+  }
+
+  addCalibration() {
+    //if (this.calibrationList === undefined)
+    //  this.calibrationList = [];
+
+    //this.calibrationList.push(new CalibrationModel);
   }
 
   ngOnChanges(item) {
@@ -60,7 +68,7 @@ export class EquipmentComponent implements OnInit {
         this.alertService.success('Registration successful', true);
         this.equipmentForm.value.id = data.id;
         if (this.equipmentList === undefined)
-            this.equipmentList = [];
+          this.equipmentList = [];
         this.equipmentList.push(this.equipmentForm.value);
       },
       error => {
@@ -68,18 +76,18 @@ export class EquipmentComponent implements OnInit {
       });
   }
 
-  getFiles(event) {
+  getFiles(event, calibration) {
+    calibration.calibrationCertificate = event.target.files;
     this.files = event.target.files;
   }
 
   upload() {
-    let fileBrowser = this.fileInput ;
-   // if (fileBrowser.files && fileBrowser.files[0]) {
-      const formData = new FormData();
-  //    formData.append("image", fileBrowser.files[0]);
-     // this.projectService.upload(formData,).subscribe(res => {
-        // do stuff w/my uploaded file
-     // });
-    }
+    let fileBrowser = this.fileInput;
+    // if (fileBrowser.files && fileBrowser.files[0]) {
+    const formData = new FormData();
+    //    formData.append("image", fileBrowser.files[0]);
+    // this.projectService.upload(formData,).subscribe(res => {
+    // do stuff w/my uploaded file
+    // });
   }
-
+}

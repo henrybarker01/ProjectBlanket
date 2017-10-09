@@ -125,11 +125,11 @@ export class DashboardComponent {//implements OnInit {
     };
 
     this.dashboard = [
-      { selector:'<div SomeDodgyShit><h1></h1> <SomeDodgyShit></SomeDodgyShit>dynamicDirective</div>', cols: 2, rows: 1, y: 0, x: 0 },
-      { selector: '<h1>  test</h1>', cols: 2, rows: 2, y: 0, x: 2 },
+      { name: 'quoteWidget', cols: 2, rows: 1, y: 0, x: 0 },
+      { name: 'calibrationWidget', cols: 2, rows: 2, y: 0, x: 2 },
       { cols: 2, rows: 1, y: 0, x: 0 },
       { cols: 2, rows: 2, y: 0, x: 2 },
-      { cols: 2, rows: 1, y: 0, x: 0 },
+      { name:'testAgain', cols: 2, rows: 1, y: 0, x: 0 },
       { cols: 2, rows: 2, y: 0, x: 2 }
     ];
 

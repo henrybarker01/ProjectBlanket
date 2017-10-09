@@ -167,6 +167,7 @@
     <TypeScriptCompile Include="src\app\directives\alert\alert.component.ts" />
     <TypeScriptCompile Include="src\app\helpers\auth.ts" />
     <TypeScriptCompile Include="src\app\interceptors\authentication.inteceptor.ts" />
+    <TypeScriptCompile Include="src\app\models\equipment\calibration.ts" />
     <TypeScriptCompile Include="src\app\models\equipment\equipment.ts" />
     <TypeScriptCompile Include="src\app\models\security\user-registration-info.ts" />
     <TypeScriptCompile Include="src\app\models\security\user.ts" />

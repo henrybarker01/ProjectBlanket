@@ -2,9 +2,9 @@
   <h1 SomeDodgyShit></h1>
   <gridster [options]="options">
     <gridster-item [item]="item" *ngFor="let item of dashboard">
-      <div > <!-- [innerHTML]="item.selector">-->
-
-      </div>
+      <quote-widget *ngIf="item.name==='quoteWidget'" > </quote-widget>
+      <quote-widget *ngIf="item.name==='calibrationWidget'"></quote-widget>
+      <quote-widget *ngIf="item.name==='testAgain'"></quote-widget>
     </gridster-item>
   </gridster>
 </div>

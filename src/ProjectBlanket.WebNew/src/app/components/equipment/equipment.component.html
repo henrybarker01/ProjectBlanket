@@ -32,8 +32,32 @@
     <h3>Calibration</h3>
     <br/>
 
-    <input type="file" (change)="getFiles($event)" placeholder="Upload file..." />
-    <button type="button" (click)="upload()">Upload</button>
+    
+    <button type="button"(click)="addCalibration()">Add Calibration</button>
+    <ul>
+      <li *ngFor="let calibration of calibrationList">
+
+        <md-form-field>
+          <input mdInput [mdDatepicker]="calibrationDate" placeholder="Calibration Date" required>
+          <md-datepicker-toggle mdSuffix [for]="calibrationDate"></md-datepicker-toggle>
+          <md-datepicker #calibrationDate></md-datepicker>
+        </md-form-field>
+
+        <md-form-field>
+          <input mdInput [mdDatepicker]="calibrationDue" placeholder="Calibration Due" required>
+          <md-datepicker-toggle mdSuffix [for]="calibrationDue"></md-datepicker-toggle>
+          <md-datepicker #calibrationDue></md-datepicker>
+        </md-form-field>
+
+        <input type="file" (change)="getFiles($event, calibration)" placeholder="Upload file..." />
+        
+
+      </li>
+    </ul>
+
+
+
+    
 
 
     <div class="button-row">
