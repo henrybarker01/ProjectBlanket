@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using ProjectBlanket.DataAccess.Contracts.Interfaces;
 using ProjectBlanket.DataAccess.DbContext;
@@ -20,6 +21,9 @@ namespace ProjectBlanket.DataAccess.Repositories
         public async Task<List<Equipment>> List() =>
             await _dbContext.Equipment.ToListAsync();
 
+        public async Task<Equipment> Find(Guid id) =>
+            await _dbContext.Equipment.FindAsync(id);
+
 
         public async Task<Equipment> Add(Equipment equipment)
         {
@@ -31,5 +35,16 @@ namespace ProjectBlanket.DataAccess.Repositories
             await _dbContext.SaveChangesAsync();
             return equipment;
         }
+
+        public async Task<List<Equipment>> GetCalibrationsDueInSixMonths()
+        {
+            var ComparisonDate = DateTime.Now.AddMonths(-6);
+            return await (from equipment in _dbContext.Equipment
+                          join calibration in _dbContext.Calibration on equipment.Id equals calibration.EquipmentId
+                          where calibration.CalibrationDue >= ComparisonDate
+                          orderby calibration.CalibrationDue descending
+                          select equipment).ToListAsync();
+        }
+
     }
 }

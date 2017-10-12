@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ProjectBlanket.DataAccess.Contracts.Interfaces;
 using ProjectBlanket.DataAccess.Entities.Entities;
@@ -17,10 +18,16 @@ namespace ProjectBlanket.Service.Services
        public async Task<List<Equipment>> List() =>
            await _equipmentRepository.List();
 
+       public async Task<Equipment> Find(Guid id) =>
+           await _equipmentRepository.Find(id);
+
 
 
        public async Task<Equipment> Add(Equipment equipment) =>
            await _equipmentRepository.Add(equipment);
+
+       public async Task<List<Equipment>> GetCalibrationsDueInSixMonths() =>
+           await _equipmentRepository.GetCalibrationsDueInSixMonths();
 
    }
 }

@@ -19,6 +19,7 @@ export class SideListComponent implements OnInit, OnChanges {
   @Input() itemList: ISideList[];
   @Output() pinSideList = new EventEmitter<any>();
   @Output() result = new EventEmitter<any>();
+  @Output() addItem = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder) { }
 
@@ -26,12 +27,10 @@ export class SideListComponent implements OnInit, OnChanges {
     this.sideListForm = this.fb.group({
       Search: ['']
     });
-
-   
+    
     this.sideListIsPinned = localStorage.getItem('sideListIsPinned') === 'true';
     // this.pinSideList.emit(this.sideListIsPinned);
-
-  }
+    }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['itemList']) {
@@ -48,6 +47,10 @@ export class SideListComponent implements OnInit, OnChanges {
     this.sideListIsPinned = !this.sideListIsPinned;
     localStorage.setItem('sideListIsPinned', this.sideListIsPinned ? 'true' : 'false');
     this.pinSideList.emit(this.sideListIsPinned);
+  }
+
+  add() {
+    this.addItem.emit();
   }
 
   filterList(value: string) {

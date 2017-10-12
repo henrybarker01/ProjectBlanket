@@ -168,6 +168,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProjectBlanket.AutoMapper\ProjectBlanket.AutoMapper.csproj">
+      <Project>{ce108998-7927-46ca-9214-5bfb771ac7d9}</Project>
+      <Name>ProjectBlanket.AutoMapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjectBlanket.DataAccess.Contracts\ProjectBlanket.DataAccess.Contracts.csproj">
       <Project>{B2000744-AE05-45E3-B821-B7BE516B015A}</Project>
       <Name>ProjectBlanket.DataAccess.Contracts</Name>

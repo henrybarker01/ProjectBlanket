@@ -1,10 +1,10 @@
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
-import { Component, OnInit, OnChanges, ComponentFactoryResolver, ViewContainerRef, NgModule, Input, ComponentFactory, ComponentRef, ChangeDetectorRef,  ViewChild,  Output, EventEmitter } from '@angular/core'
+import { Component, OnInit, OnChanges, ComponentFactoryResolver, ViewContainerRef, NgModule, Input, ComponentFactory, ComponentRef, ChangeDetectorRef, ViewChild, Output, EventEmitter } from '@angular/core'
 import { QuoteService } from '../../services/quote.service';
 import { Global } from '../../shared/global';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { QuoteWidget } from './widgets/quote-widget/quote-widget.component';
- 
+
 import { BrowserModule } from '@angular/platform-browser'
 
 @Component({
@@ -15,15 +15,16 @@ import { BrowserModule } from '@angular/platform-browser'
 export class DashboardComponent {//implements OnInit {
 
   options: GridsterConfig;
-  dashboard: Array<GridsterItem>;
-   
+  availableWidgets: Array<GridsterItem>;
+  addedWidgets: Array<GridsterItem>;
+
   @ViewChild("dynamicComponentContainer", { read: ViewContainerRef }) container;
   //componentRef: ComponentRef<QuoteWidget>;
 
   constructor(private fb: FormBuilder, private _quoteService: QuoteService, private componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
 
-  
+
 
   itemChange(item: any, itemComponent: any) {
     console.info('itemChanged', item, itemComponent);
@@ -51,7 +52,8 @@ export class DashboardComponent {//implements OnInit {
   //}
 
   ngOnInit() {
-     
+
+    this.addedWidgets = [];
 
     this.options = {
       itemChangeCallback: this.itemChange,
@@ -124,33 +126,32 @@ export class DashboardComponent {//implements OnInit {
       disableWindowResize: false
     };
 
-    this.dashboard = [
-      { name: 'quoteWidget', cols: 2, rows: 1, y: 0, x: 0 },
-      { name: 'calibrationWidget', cols: 2, rows: 2, y: 0, x: 2 },
-      { cols: 2, rows: 1, y: 0, x: 0 },
-      { cols: 2, rows: 2, y: 0, x: 2 },
-      { name:'testAgain', cols: 2, rows: 1, y: 0, x: 0 },
-      { cols: 2, rows: 2, y: 0, x: 2 }
+    this.availableWidgets = [
+      { name: 'quoteWidget', description: 'Quote List', cols: 2, rows: 1, y: 0, x: 0 },
+      { name: 'calibrationWidget', description: 'Calibrations Due', cols: 2, rows: 2, y: 0, x: 2 },
+      { name: 'testAgain', description: 'Tester', cols: 2, rows: 1, y: 0, x: 0 },
     ];
-
-    this.dashboard.forEach((item) => {
-    //  createComponent(item.selector);
-    });
   }
 
-
+  addWidget(widgetName) {
+    let index = this.availableWidgets.findIndex((item) => {
+      return item.name === widgetName;
+    });
+   
+    this.addedWidgets.push(this.availableWidgets[index]);
+    this.availableWidgets.splice(index, 1);
+  }
 
   changedOptions() {
     this.options.api.optionsChanged();
   }
 
   removeItem(item: any) {
-    this.dashboard.splice(this.dashboard.indexOf(item), 1);
+    this.addedWidgets.splice(this.addedWidgets.indexOf(item), 1);
+    this.availableWidgets.push(item);
   }
 
-  addItem() {
-    this.dashboard.push({});
+  saveDashboard() {
+    
   }
-
-
 }

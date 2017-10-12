@@ -1,0 +1,11 @@
+<div>
+  <h4>Calibration Due</h4>
+  <span> The following equipment is due for calibration:</span>
+  <ul>
+    <li *ngFor="let equipment of equipmentList">
+      <span> {{equipment.name}}</span>
+      <span> {{equipment.calibrationDue}}</span>
+
+    </li>
+  </ul>
+</div>

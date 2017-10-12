@@ -7,9 +7,18 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { GridsterModule } from 'angular-gridster2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule } from '@angular/material';
-import { MdInputModule } from '@angular/material';
-import { MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatMenuModule,
+  MatSelectModule
+} from '@angular/material';
+
+//import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 
 //components
 import { AppComponent } from './app.component';
@@ -21,9 +30,12 @@ import { RegisterComponent } from './components/security/register/register.compo
 import { LoginComponent } from './components/security/login/login.component';
 import { AlertComponent } from './directives/alert/alert.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-//import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component'
+import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component';
 import { EquipmentComponent } from './components/equipment/equipment.component'
+import { HeaderComponent } from "./components/page-header/page-header.component";
 
+//Dashboard Components
+import { CalibrationDueWidget } from "./components/dashboard/widgets/calibration-due/calibration-due-widget.component";
 
 //services
 import { UserService } from './services/user.service';
@@ -39,7 +51,6 @@ import { AuthGuard } from './helpers/auth';
 import { AuthInterceptor } from './interceptors/authentication.inteceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-widget.component';
 
 @NgModule({
   imports: [BrowserModule,
@@ -47,12 +58,14 @@ import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-w
     HttpModule, routing,
     GridsterModule,
     BrowserAnimationsModule,
-    MdButtonModule,
-    MdCheckboxModule,
-    MdInputModule,
-    MdDatepickerModule,
-    MdNativeDateModule,
-    FormsModule],//Ng2Bs3ModalModule   
+    MatButtonModule, MatCheckboxModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMenuModule,
+    MatSelectModule,
+    FormsModule,
+    FileUploadModule],//Ng2Bs3ModalModule   
 
   declarations: [AppComponent,
     TopNavigationComponent,
@@ -64,7 +77,10 @@ import { QuoteWidget } from './components/dashboard/widgets/quote-widget/quote-w
     AlertComponent,
     DashboardComponent,
     QuoteWidget,
-
+    HeaderComponent,
+    CalibrationDueWidget,
+    //FileDropDirective,
+    //FileSelectDirective,
     // CardHoverDirective,
     EquipmentComponent],
 

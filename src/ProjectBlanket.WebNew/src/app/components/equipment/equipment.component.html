@@ -2,66 +2,73 @@
   <side-list [listHeading]="['Equipment List']"
              [itemList]="equipmentList"
              (result)="ngOnChanges($event)"
-             (pinSideList)="pinSideList($event)"></side-list>
+             (pinSideList)="pinSideList($event)"
+             (addItem)="addEquipment()"></side-list>
 
 </div>
 <div class="page-content" [ngClass]="{'fit-in': isPinned}">
-  <form name="form" (ngSubmit)="sumbit()"  novalidate><!--[formGroup]="equipmentForm"-->
-    <md-form-field class="example-full-width">
-      <input mdInput placeholder="Name" [(ngModel)]="equipment.name" [ngModelOptions]="{standalone: true}" required><!--formControlName="name"-->
-    </md-form-field>
-    <!--<md-form-field class="example-full-width">
-      <input mdInput placeholder="Description" formControlName="description" required/>
-    </md-form-field>
-    <md-form-field class="example-full-width">
-      <input mdInput placeholder="Model" formControlName="model" required/>
-    </md-form-field>
-    <md-form-field class="example-full-width">
-      <input mdInput placeholder="Serial Number" formControlName="serialNumber" required/>
-    </md-form-field>
-    <md-form-field class="example-full-width">
-      <input type="number" mdInput placeholder="Initial Cost" formControlName="initialCost" required/>
-    </md-form-field>
-    <md-checkbox class="example-margin" formControlName="isCalibrated">
-      Is Calibrated
-    </md-checkbox>-->
+  <page-header [heading]="equipment.id === undefined? 'Add Equipment' : 'Edit Equipment'"
+               [name]="equipment.name"></page-header>
+   
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Name" [(ngModel)]="equipment.name" [ngModelOptions]="{standalone: true}" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Description" [(ngModel)]="equipment.description" [ngModelOptions]="{standalone: true}" required />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Model" [(ngModel)]="equipment.model" [ngModelOptions]="{standalone: true}" required />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Serial Number" [(ngModel)]="equipment.serialNumber" [ngModelOptions]="{standalone: true}" required />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input type="number" matInput placeholder="Initial Cost" [(ngModel)]="equipment.initialCost" [ngModelOptions]="{standalone: true}" required />
+  </mat-form-field>
+  <mat-checkbox class="example-margin" [(ngModel)]="equipment.isCalibrated" [ngModelOptions]="{standalone: true}">
+    Is Calibrated
+  </mat-checkbox>
 
-    <br />
-    <br/>
+  <br />
+  <br />
 
-    <h3>Calibration</h3>
-    <br/>
-
-    
-    <button type="button" (click)="addCalibration()">Add Calibration</button>
-    <ul>
-      <li *ngFor="let calibration of equipment.calibrationList">
-
-        <md-form-field>
-          <input mdInput [mdDatepicker]="calibrationDate" placeholder="Calibration Date" [(ngModel)]="calibration.calibrationDate" [ngModelOptions]="{standalone: true}" required>
-          <md-datepicker-toggle mdSuffix [for]="calibrationDate"></md-datepicker-toggle>
-          <md-datepicker #calibrationDate></md-datepicker>
-        </md-form-field>
-
-        <md-form-field>
-          <input mdInput [mdDatepicker]="calibrationDue" placeholder="Calibration Due"  [(ngModel)]="calibration.calibrationDue" [ngModelOptions]="{standalone: true}" required>
-          <md-datepicker-toggle mdSuffix [for]="calibrationDue"></md-datepicker-toggle>
-          <md-datepicker #calibrationDue></md-datepicker>
-        </md-form-field>
-
-        <input type="file" (change)="getFiles($event, calibration)" placeholder="Upload file..." />
+  <h3>Calibration</h3>
+  <br />
 
 
-      </li>
-    </ul>
+  <button type="button" (click)="addCalibration()">Add Calibration</button>
+  <ul>
+    <li *ngFor="let calibration of equipment.calibrationList">
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="calibrationDate" placeholder="Calibration Datee"  [(ngModel)]="calibration.calibrationDate" [ngModelOptions]="{standalone: true}" required>
+        <mat-datepicker-toggle matSuffix [for]="calibrationDate"></mat-datepicker-toggle>
+        <mat-datepicker #calibrationDate></mat-datepicker>
+      </mat-form-field>
+
+     
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="calibrationDue" placeholder="Calibration Due" [(ngModel)]="calibration.calibrationDue" [ngModelOptions]="{standalone: true}" required>
+        <mat-datepicker-toggle matSuffix [for]="calibrationDue"></mat-datepicker-toggle>
+        <mat-datepicker #calibrationDue></mat-datepicker>
+      </mat-form-field>
+
+      file
+      <div ng2FileDrop [uploader]="uploader">
+        <input type="file" ng2FileSelect [uploader]="uploader" multiple />
+      </div>
+
+    </li>
+  </ul>
 
 
 
-    
 
 
-    <div class="button-row">
-      <button md-raised-button color="primary">Save</button>
-    </div>
-  </form>
+
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="submit();">Save</button>
+  </div>
+
 </div>

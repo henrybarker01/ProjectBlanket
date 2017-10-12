@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnChanges } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EquipmentService } from '../../services/equipment.service';
 import { AlertService } from '../../services/alert.service';
 import { CalibrationModel } from "../../models/equipment/calibration";
 import { EquipmentModel } from "../../models/equipment/equipment";
+import { Observable } from "rxjs/Rx";
+
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'equipment',
@@ -12,19 +15,43 @@ import { EquipmentModel } from "../../models/equipment/equipment";
 
 
 
-export class EquipmentComponent implements OnInit {
+export class EquipmentComponent implements OnInit, OnChanges {
 
-  constructor(//private fb: FormBuilder,
-    private _equipmentService: EquipmentService,
-    private alertService: AlertService) { }
+  uploader = new FileUploader({
+    url: 'https://evening-anchorage-3159.herokuapp.com/api/'
+  });
 
+  hasBaseDropZoneOver: boolean;
+  hasAnotherDropZoneOver: boolean;
+  response: string;
+
+  //review
   equipment: EquipmentModel;
-  // calibrationList: CalibrationModel[];
   isPinned: boolean = false;
   equipmentList: object[];
   fileInput: File;
   files: FileList;
 
+  constructor(
+    private _equipmentService: EquipmentService,
+    private alertService: AlertService) {
+
+
+
+  }
+
+
+  ngOnChanges(val: any) {
+    this.equipment.id = val;
+    this._equipmentService.get(val).subscribe((data) => {
+      this.equipment = data.json();
+    });
+
+  }
+
+  addEquipment() {
+    this.equipment = new EquipmentModel;
+  }
 
   ngOnInit(): void {
     this.equipment = new EquipmentModel;
@@ -55,51 +82,54 @@ export class EquipmentComponent implements OnInit {
   }
 
   addCalibration() {
-    // if (this.equipment.calibration === undefined)
-    //  this.equipment.calibration = [];
+    if (this.equipment.calibrationList === undefined)
+      this.equipment.calibrationList = [];
     this.equipment.calibrationList.push(new CalibrationModel);
   }
 
-  ngOnChanges(item) {
 
-  }
 
   pinSideList(val: any) {
     this.isPinned = val;
   }
 
-  sumbit() {
-    this._equipmentService.put(this.equipment).subscribe(
-      data => {
-        this.alertService.success('Registration successful', true);
-        this.equipment.id = data.id;
-        if (this.equipmentList === undefined)
-          this.equipmentList = [];
-        this.equipmentList.push(
-          {
-            id: this.equipment.id,
-            description: this.equipment.name
-          });
-      },
-      error => {
-        this.alertService.error(error);
-      });
+  submit() {
+    if (this.equipment.id === undefined) {
+      this._equipmentService.put(this.equipment).subscribe(
+        data => {
+          this.alertService.success('Registration successful', true);
+          this.equipment.id = data;
+          if (this.equipmentList === undefined)
+            this.equipmentList = [];
+          this.equipmentList.push(
+            {
+              id: this.equipment.id,
+              description: this.equipment.name
+            });
+        },
+        error => {
+          this.alertService.error(error);
+        });
+    } else {
+
+    }
   }
 
   getFiles(event, calibration) {
-    let reader = new FileReader();
-    reader.onload = function () {
 
-      let arrayBuffer = this.result,
-        array = new Uint8Array(arrayBuffer);
-       // binaryString = String.fromCharCode.apply(null, array);
 
-        calibration.calibrationCertificate = array;
+    let fr = new FileReader();
+    let data = new Blob([event.target.files[0]]);
+    fr.readAsArrayBuffer(data);
 
-    }
-     //reader.readAsArrayBuffer(event.target.files[0]);
+
+
+    // file.map((fileData) => {
     calibration.fileName = event.target.files[0].name;
-    //this.files = event.target.files;
+    calibration.calibrationCertificate = data;
+    return calibration;
+    //});
+
   }
 
   upload() {

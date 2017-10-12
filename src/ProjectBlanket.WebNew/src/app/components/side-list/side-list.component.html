@@ -3,13 +3,16 @@
     <div class="side-list-content" [ngClass]="{'isPinned': sideListIsPinned}">
         <h4 class="heading">{{listHeading}}</h4>
         <span class="pin" [ngClass]="{'isPinned': sideListIsPinned}" title="close" (click)="doPinSideList()"><i class="glyphicon glyphicon-pushpin"></i></span>
-        <form class="side-list-form" novalidate [formGroup]="sideListForm">
-            <input type="text" class="form-control" placeholder="Search" formControlName="Search" (ngModelChange)="filterList($event)">
-            <ul>
-                <li *ngFor="let item of displayItemList" (click)="routeTo(item.id);" [ngClass]="{'is-selected-value': item.id === selectedValue}">
-                    <a >{{item.description}}</a>
-                </li>
-            </ul>
-        </form>
+      <form class="side-list-form" novalidate [formGroup]="sideListForm">
+        <input type="text" class="form-control" placeholder="Search" formControlName="Search" (ngModelChange)="filterList($event)">
+        <ul>
+          <li *ngFor="let item of displayItemList" (click)="routeTo(item.id);" [ngClass]="{'is-selected-value': item.id === selectedValue}">
+            <a >{{item.description}}</a>
+          </li>
+        </ul>
+      </form>
+      <div class="button-row">
+        <button md-raised-button color="basic" class="add-item" (click)="add()">Add</button>
+      </div>
     </div> 
 </div>

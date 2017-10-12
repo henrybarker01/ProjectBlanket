@@ -27,8 +27,23 @@ namespace ProjectBlanket.WebApi.Controllers
             return Map<List<EquipmentListModel>>(result);
         }
 
+        [HttpGet, Route("get/{id}")]
+        public async Task<EquipmentModel> Get(Guid id)
+        {
+            var result = await _equipmentService.Find(id);
+            return Map<EquipmentModel>(result);
+        }
+
         [HttpPut, Route("add")]
         public async Task<Guid> Add(EquipmentModel equipmentModel) =>
             (await _equipmentService.Add(Map<Equipment>(equipmentModel))).Id;
+
+        [HttpGet, Route("getCalibrationsDueInSixMonths")]
+        public async Task<List<EquipmentModel>> GetCalibrationsDueInSixMonths()
+        {
+            var result = await _equipmentService.GetCalibrationsDueInSixMonths();
+        
+            return Map<List<EquipmentModel>>(result);
+        }
     }
 }

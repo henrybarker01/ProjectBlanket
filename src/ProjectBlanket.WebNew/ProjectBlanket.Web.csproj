@@ -78,8 +78,10 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <Content Include="src\app\components\dashboard\widgets\calibration-due\calibration-due-widget.component.html" />
     <Content Include="src\app\components\dashboard\widgets\quote-widget\quote-widget.component.html" />
     <Content Include="src\app\components\equipment\equipment.component.html" />
+    <Content Include="src\app\components\page-header\page-header.component.html" />
     <Content Include="src\assets\.gitkeep" />
     <Content Include="src\assets\images\2ade2df3-b111-475d-89ab-3a9a01f418d1-1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -118,6 +120,8 @@
     <Content Include="src\styles\pages\login\login.less" />
     <Content Include="src\styles\pages\side-list\side-list-content.less" />
     <Content Include="src\styles\pages\dashboard\dashboard.less" />
+    <Content Include="src\styles\pages\page-header\page-header.less" />
+    <Content Include="src\styles\palette.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -156,9 +160,11 @@
     <TypeScriptCompile Include="src\app\app.routing.ts" />
     <TypeScriptCompile Include="src\app\components\contract-review\contract-review.component.ts" />
     <TypeScriptCompile Include="src\app\components\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\components\dashboard\widgets\calibration-due\calibration-due-widget.component.ts" />
     <TypeScriptCompile Include="src\app\components\dashboard\widgets\quote-widget\quote-widget.component.ts" />
     <TypeScriptCompile Include="src\app\components\equipment\equipment.component.ts" />
     <TypeScriptCompile Include="src\app\components\home.component.ts" />
+    <TypeScriptCompile Include="src\app\components\page-header\page-header.component.ts" />
     <TypeScriptCompile Include="src\app\components\quotes\quotes.component.ts" />
     <TypeScriptCompile Include="src\app\components\security\login\login.component.ts" />
     <TypeScriptCompile Include="src\app\components\security\register\register.component.ts" />
@@ -175,6 +181,7 @@
     <TypeScriptCompile Include="src\app\models\user.ts" />
     <TypeScriptCompile Include="src\app\services\alert.service.ts" />
     <TypeScriptCompile Include="src\app\services\authentication.service.ts" />
+    <TypeScriptCompile Include="src\app\services\dashboard.service.ts" />
     <TypeScriptCompile Include="src\app\services\equipment.service.ts" />
     <TypeScriptCompile Include="src\app\services\quote.service.ts" />
     <TypeScriptCompile Include="src\app\services\user.service.ts" />
