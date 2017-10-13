@@ -9,6 +9,7 @@ namespace ProjectBlanket.DataAccess.Module
         {
             builder.RegisterType<QuotesRepository>().AsImplementedInterfaces();
             builder.RegisterType<EquipmentRepository>().AsImplementedInterfaces();
+            builder.RegisterType<DashboardRepository>().AsImplementedInterfaces();
         }
     }
 }

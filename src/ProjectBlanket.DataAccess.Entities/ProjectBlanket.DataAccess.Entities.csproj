@@ -45,6 +45,7 @@
     <Compile Include="Entities\Calibration.cs" />
     <Compile Include="Entities\Equipment.cs" />
     <Compile Include="Entities\Quote.cs" />
+    <Compile Include="Entities\Widget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

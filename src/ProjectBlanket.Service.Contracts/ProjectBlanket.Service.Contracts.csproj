@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IDashboardService.cs" />
     <Compile Include="Interfaces\IEquipmentService.cs" />
     <Compile Include="Interfaces\IQuoteService.cs" />
+    <Compile Include="Models\Dashboard\WidgetModel.cs" />
     <Compile Include="Models\Equipment\CalibrationModel.cs" />
     <Compile Include="Models\Equipment\EquipmentListModel.cs" />
     <Compile Include="Models\Equipment\EquipmentModel.cs" />

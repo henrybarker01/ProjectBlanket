@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using AutoMapper;
 using ProjectBlanket.AutoMapper.MappingProfiles;
 
@@ -22,6 +17,7 @@ namespace ProjectBlanket.AutoMapper
             {
                 x.AddProfile<QuoteMappingProfile>();
                 x.AddProfile<EquipmentMappingProfile>();
+                x.AddProfile<DashboadMappingProfile>();
             });
     }
 }

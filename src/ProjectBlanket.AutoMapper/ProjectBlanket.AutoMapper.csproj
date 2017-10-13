@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="MappingProfiles\DashboadMappingProfile.cs" />
     <Compile Include="MappingProfiles\EquipmentMappingProfile.cs" />
     <Compile Include="MappingProfiles\QuoteMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

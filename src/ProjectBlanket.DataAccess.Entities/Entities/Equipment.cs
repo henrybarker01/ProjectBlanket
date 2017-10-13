@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
 using ProjectBlanket.DataAccess.Core.Entities;
 
 namespace ProjectBlanket.DataAccess.Entities.Entities
@@ -13,9 +11,6 @@ namespace ProjectBlanket.DataAccess.Entities.Entities
         public string SerialNumber { get; set; }
         public decimal InitialCost { get; set; }
         public bool IsCalibrated { get; set; }
-
-        public Guid CalibrationId { get; set; }
-         
         public IList<Calibration> CalibrationList { get; set; }
     }
 }

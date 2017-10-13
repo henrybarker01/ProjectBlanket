@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IDashboardRepository.cs" />
     <Compile Include="Interfaces\IEquipmentRepository.cs" />
     <Compile Include="Interfaces\IQuotesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

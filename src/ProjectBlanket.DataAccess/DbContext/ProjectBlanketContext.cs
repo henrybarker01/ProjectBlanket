@@ -15,5 +15,6 @@ namespace ProjectBlanket.DataAccess.DbContext
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
         public DbSet<Calibration> Calibration { get; set; }
+        public DbSet<Widget> Widget { get; set; }
     }
 }
