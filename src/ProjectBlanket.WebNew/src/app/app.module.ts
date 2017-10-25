@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 //import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
-import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { GridsterModule } from 'angular-gridster2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +15,7 @@ import {
   MatMenuModule,
   MatSelectModule
 } from '@angular/material';
+
 
 //import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -43,19 +43,20 @@ import { AlertService } from './services/alert.service';
 import { QuoteService } from './services/quote.service';
 import { AuthenticationService } from './services/authentication.service';
 import { EquipmentService } from './services/equipment.service';
+import { DashboardService } from "./services/dashboard.service";
 
 //helpers
 import { AuthGuard } from './helpers/auth';
 
 //interceptors
 import { AuthInterceptor } from './interceptors/authentication.inteceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
   imports: [BrowserModule,
     ReactiveFormsModule,
-    HttpModule, routing,
+    routing,
     GridsterModule,
     BrowserAnimationsModule,
     MatButtonModule, MatCheckboxModule,
@@ -65,7 +66,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     MatMenuModule,
     MatSelectModule,
     FormsModule,
-    FileUploadModule],//Ng2Bs3ModalModule   
+    FileUploadModule,
+    HttpClientModule],//Ng2Bs3ModalModule   
 
   declarations: [AppComponent,
     TopNavigationComponent,
@@ -95,7 +97,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     AuthenticationService,
     AuthGuard,
     AlertService,
-    EquipmentService],
+    EquipmentService,
+    DashboardService
+  ],
 
 
   bootstrap: [AppComponent],

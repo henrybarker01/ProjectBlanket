@@ -122,6 +122,9 @@
     <Content Include="src\styles\pages\dashboard\dashboard.less" />
     <Content Include="src\styles\pages\page-header\page-header.less" />
     <Content Include="src\styles\palette.less" />
+    <Content Include="src\styles\pages\generic\generic.less" />
+    <Content Include="src\styles\pages\general-pages\equipment.less" />
+    <Content Include="src\styles\pages\alert\alert.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

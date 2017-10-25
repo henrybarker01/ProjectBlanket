@@ -9,7 +9,7 @@ namespace ProjectBlanket.Service.Module
         {
             builder.RegisterType<QuoteService>().AsImplementedInterfaces();
             builder.RegisterType<EquipmentService>().AsImplementedInterfaces();
-            builder.RegisterType<DashboardService>();
+            builder.RegisterType<DashboardService>().AsImplementedInterfaces();
         }
     }
 }

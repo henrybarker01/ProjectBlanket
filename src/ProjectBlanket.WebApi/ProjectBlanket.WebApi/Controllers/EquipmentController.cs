@@ -10,6 +10,7 @@ using ProjectBlanket.WebApi.Models.Equipment;
 
 namespace ProjectBlanket.WebApi.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/equipment")]
     public class EquipmentController : BaseApiController
     {

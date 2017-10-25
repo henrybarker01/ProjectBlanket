@@ -191,3 +191,63 @@
   font-weight: bold;
   color: #636262;
 }
+.page-header > .button-row {
+  background-color: pink;
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.input {
+  margin: 0 0 0 20px;
+  color: #636262;
+  font-size: 20px;
+  font-family: 'Segoe UI';
+  display: inline;
+}
+.input-full-width {
+  width: 300px !important;
+}
+.input-extra-wide {
+  width: 622px !important;
+}
+.generic-ul {
+  list-style: none;
+}
+.generic-file-drop {
+  display: inline-block;
+  width: 300px;
+}
+.calibration-container {
+  width: 40%;
+  position: relative;
+  margin: 0 0 0 20px;
+}
+.calibration-container > h3 {
+  margin: 5px 0 0 10px;
+  display: inline;
+}
+.calibration-container .add-list-button {
+  position: absolute;
+  right: 10px;
+  top: -5px;
+}
+.calibration-container .add-list-button .material-icons {
+  font-size: 28px;
+  color: #46ad2d;
+}
+.remove-list-button {
+  color: #ff0000;
+}
+.remove-list-button .material-icons {
+  font-size: 28px;
+  color: #ff0000;
+}
+.alert-container {
+  position: fixed;
+  z-index: 999;
+  top: 100px;
+  right: 50%;
+  width: 300px;
+  text-align: center;
+}

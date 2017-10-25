@@ -1,11 +1,11 @@
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { Component, OnInit, OnChanges, ComponentFactoryResolver, ViewContainerRef, NgModule, Input, ComponentFactory, ComponentRef, ChangeDetectorRef, ViewChild, Output, EventEmitter } from '@angular/core'
-import { QuoteService } from '../../services/quote.service';
+import { DashboardService } from '../../services/dashboard.service';
 import { Global } from '../../shared/global';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-//import { QuoteWidget } from './widgets/quote-widget/quote-widget.component';
 
 import { BrowserModule } from '@angular/platform-browser'
+import * as _ from 'lodash';
 
 @Component({
   selector: 'dashboard',
@@ -16,48 +16,32 @@ export class DashboardComponent {//implements OnInit {
 
   options: GridsterConfig;
   availableWidgets: Array<GridsterItem>;
-  addedWidgets: Array<GridsterItem>;
-
-  @ViewChild("dynamicComponentContainer", { read: ViewContainerRef }) container;
-  //componentRef: ComponentRef<QuoteWidget>;
-
-  constructor(private fb: FormBuilder, private _quoteService: QuoteService, private componentFactoryResolver: ComponentFactoryResolver,
-    private viewContainerRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
+  @Input() addedWidgets: Array<GridsterItem>;
+  _dashboardService: DashboardService;
 
 
-
-  itemChange(item: any, itemComponent: any) {
-    console.info('itemChanged', item, itemComponent);
+  constructor(private dashboardService: DashboardService) {
+    this._dashboardService = dashboardService;
   }
-
-  itemResize(item: any, itemComponent: any) {
-    console.info('itemResized', item, itemComponent);
-  }
-
-  //createComponent(type) {
-  //  this.container.clear();
-  //  const factory: ComponentFactory<QuoteWidget> = this.resolver.resolveComponentFactory(QuoteWidget);
-
-  //  this.componentRef = this.container.createComponent(factory);
-
-  //  this.componentRef.instance.type = type;
-
-  //  this.componentRef.instance.output.subscribe(event => console.log(event));
-  //}
-
-  //private sayHello() {
-  //  const factory = this.componentFactoryResolver.resolveComponentFactory(QuoteWidget);
-  //  const ref = this.viewContainerRef.createComponent(factory);
-  //  ref.changeDetectorRef.detectChanges();
-  //}
 
   ngOnInit() {
 
     this.addedWidgets = [];
 
+
+
     this.options = {
-      itemChangeCallback: this.itemChange,
-      itemResizeCallback: this.itemResize,
+      itemChangeCallback: (item: any) => {
+        var index = this.addedWidgets.indexOf((x) => {
+          return x.name === item.name;
+        });
+        this.addedWidgets.splice(index, 1);
+        this.addedWidgets.push(item);
+        this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
+      },
+      itemResizeCallback: () => {
+        this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
+      },
 
       gridType: 'fit',
       compactType: 'none',
@@ -131,19 +115,35 @@ export class DashboardComponent {//implements OnInit {
       { name: 'calibrationWidget', description: 'Calibrations Due', cols: 2, rows: 2, y: 0, x: 2 },
       { name: 'testAgain', description: 'Tester', cols: 2, rows: 1, y: 0, x: 0 },
     ];
+
+    this._dashboardService.getLayout().subscribe((data) => {
+      this.addedWidgets = _.values(data);
+
+      this.addedWidgets.forEach((widget) => {
+        var index = this.availableWidgets.indexOf((x) => {
+          return x.name === widget.name;
+        });
+        this.availableWidgets.splice(index, 1);
+      });
+    });
+
+
+  }
+
+
+
+
+  public saveDashboard() {
+    this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
   }
 
   addWidget(widgetName) {
     let index = this.availableWidgets.findIndex((item) => {
       return item.name === widgetName;
     });
-   
     this.addedWidgets.push(this.availableWidgets[index]);
     this.availableWidgets.splice(index, 1);
-  }
-
-  changedOptions() {
-    this.options.api.optionsChanged();
+    this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
   }
 
   removeItem(item: any) {
@@ -151,7 +151,5 @@ export class DashboardComponent {//implements OnInit {
     this.availableWidgets.push(item);
   }
 
-  saveDashboard() {
-    
-  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import {EquipmentService} from "../../../../services/equipment.service";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'calibtation-due-widget',
@@ -16,7 +17,7 @@ export class CalibrationDueWidget implements OnInit {
 
   ngOnInit() {
     this._equipmentService.getCalibrationsDueInSixMonths().subscribe((data) => {
-      this.equipmentList = data.json();
+      this.equipmentList = _.values(data);
     });
   }
 }

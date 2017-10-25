@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core'
 import { QuoteService } from '../../services/quote.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Global } from '../../shared/global';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'quotes',
@@ -21,7 +22,7 @@ export class QuotesComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this._quoteService.list().subscribe((data) => {
       this.quoteList = [];
-       data.json().forEach((item) => {
+       _.values(data).forEach((item) => {
          this.quoteList.push({
            id: item.id,
            description: item.quoteNumber

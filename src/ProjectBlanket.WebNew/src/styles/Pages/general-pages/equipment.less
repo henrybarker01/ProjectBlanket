@@ -1,0 +1,35 @@
+@import (reference) "../../palette";
+
+.calibration-container {
+  width: 40%;
+  position: relative;
+  margin:0 0 0 20px;
+  & > h3 {
+    margin: 5px 0 0 10px;
+    display: inline;
+  }
+
+  .add-list-button {
+    position: absolute;
+    right: 10px;
+    top: -5px;
+
+    .material-icons {
+      // font-weight: bold;
+      font-size: 28px;
+      color: @text-green;
+    }
+  }
+
+ 
+}
+
+.remove-list-button {
+  color: @text-red;
+
+  .material-icons {
+    // font-weight: bold;
+    font-size: 28px;
+    color: @text-red;
+  }
+}

@@ -7,6 +7,7 @@ import { EquipmentModel } from "../../models/equipment/equipment";
 import { Observable } from "rxjs/Rx";
 
 import { FileUploader } from 'ng2-file-upload';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'equipment',
@@ -35,16 +36,13 @@ export class EquipmentComponent implements OnInit, OnChanges {
   constructor(
     private _equipmentService: EquipmentService,
     private alertService: AlertService) {
-
-
-
   }
 
 
   ngOnChanges(val: any) {
     this.equipment.id = val;
     this._equipmentService.get(val).subscribe((data) => {
-      this.equipment = data.json();
+      this.equipment = <EquipmentModel>data;
     });
 
   }
@@ -56,21 +54,10 @@ export class EquipmentComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.equipment = new EquipmentModel;
     this.equipment.calibrationList = [];
-    // this.equipmentForm = this.fb.group({
-    //   id: [''],
-    //   name: ['', Validators.required],
-    //   description: ['', Validators.required],
-    //   model: ['', Validators.required],
-    //   serialNumber: ['', Validators.required],
-    //   initialCost: ['', Validators.required],
-    //   isCalibrated: [false, Validators.required],
-    //   calibrationList: [[CalibrationModel]]
-    //
-    // });
-
+   
     this._equipmentService.list().subscribe((data) => {
       this.equipmentList = [];
-      data.json().forEach((item) => {
+      _.values(data).forEach((item) => {
         this.equipmentList.push({
           id: item.id,
           description: item.name
@@ -87,6 +74,11 @@ export class EquipmentComponent implements OnInit, OnChanges {
     this.equipment.calibrationList.push(new CalibrationModel);
   }
 
+  removeCalibration(calibration: any) {
+    let index = this.equipment.calibrationList.indexOf(calibration);
+    this.equipment.calibrationList.splice(index, 1);
+  }
+
 
 
   pinSideList(val: any) {
@@ -97,7 +89,7 @@ export class EquipmentComponent implements OnInit, OnChanges {
     if (this.equipment.id === undefined) {
       this._equipmentService.put(this.equipment).subscribe(
         data => {
-          this.alertService.success('Registration successful', true);
+          this.alertService.success('Equipment added!', true, 1500);
           this.equipment.id = data;
           if (this.equipmentList === undefined)
             this.equipmentList = [];

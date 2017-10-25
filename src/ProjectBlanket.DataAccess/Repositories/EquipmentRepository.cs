@@ -22,7 +22,7 @@ namespace ProjectBlanket.DataAccess.Repositories
             await _dbContext.Equipment.ToListAsync();
 
         public async Task<Equipment> Find(Guid id) =>
-            await _dbContext.Equipment.FindAsync(id);
+            await _dbContext.Equipment.Include(x=>x.CalibrationList).FirstAsync(x=>x.Id == id);
 
 
         public async Task<Equipment> Add(Equipment equipment)

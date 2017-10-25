@@ -6,59 +6,64 @@
              (addItem)="addEquipment()"></side-list>
 
 </div>
+
 <div class="page-content" [ngClass]="{'fit-in': isPinned}">
   <page-header [heading]="equipment.id === undefined? 'Add Equipment' : 'Edit Equipment'"
-               [name]="equipment.name"></page-header>
-   
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Name" [(ngModel)]="equipment.name" [ngModelOptions]="{standalone: true}" required>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Description" [(ngModel)]="equipment.description" [ngModelOptions]="{standalone: true}" required />
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
+               [name]="equipment.name"
+               (submit)="submit();"></page-header>
+
+  <div>
+    
+    <mat-form-field class="input input-full-width">
+      <input matInput placeholder="Name" [(ngModel)]="equipment.name" [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+    <mat-form-field class="input input-extra-wide">
+      <input matInput placeholder="Description" [(ngModel)]="equipment.description" [ngModelOptions]="{standalone: true}" required/>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="input input-full-width">
     <input matInput placeholder="Model" [(ngModel)]="equipment.model" [ngModelOptions]="{standalone: true}" required />
   </mat-form-field>
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="input input-full-width">
     <input matInput placeholder="Serial Number" [(ngModel)]="equipment.serialNumber" [ngModelOptions]="{standalone: true}" required />
   </mat-form-field>
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="input input-full-width ">
     <input type="number" matInput placeholder="Initial Cost" [(ngModel)]="equipment.initialCost" [ngModelOptions]="{standalone: true}" required />
   </mat-form-field>
-  <mat-checkbox class="example-margin" [(ngModel)]="equipment.isCalibrated" [ngModelOptions]="{standalone: true}">
+  <!--<mat-checkbox class="example-margin" [(ngModel)]="equipment.isCalibrated" [ngModelOptions]="{standalone: true}">
     Is Calibrated
-  </mat-checkbox>
+  </mat-checkbox>-->
 
   <br />
-  <br />
+   <br/>
 
-  <h3>Calibration</h3>
-  <br />
-
-
-  <button type="button" (click)="addCalibration()">Add Calibration</button>
-  <ul>
+  <div class="calibration-container">
+    <h3>Calibrations</h3>
+    <button class="add-list-button" mat-icon-button (click)="addCalibration()">
+      <i class="material-icons">add_circle_outline</i>
+    </button>
+    <hr />
+  </div>
+  <ul class="generic-ul">
     <li *ngFor="let calibration of equipment.calibrationList">
-
-      <mat-form-field>
-        <input matInput [matDatepicker]="calibrationDate" placeholder="Calibration Datee"  [(ngModel)]="calibration.calibrationDate" [ngModelOptions]="{standalone: true}" required>
+      <mat-form-field class="input input-full-width">
+        <input matInput [matDatepicker]="calibrationDate" placeholder="Calibration Date"  [(ngModel)]="calibration.calibrationDate" [ngModelOptions]="{standalone: true}" required>
         <mat-datepicker-toggle matSuffix [for]="calibrationDate"></mat-datepicker-toggle>
         <mat-datepicker #calibrationDate></mat-datepicker>
       </mat-form-field>
-
-     
-
-      <mat-form-field>
+      <mat-form-field class="input input-full-width">
         <input matInput [matDatepicker]="calibrationDue" placeholder="Calibration Due" [(ngModel)]="calibration.calibrationDue" [ngModelOptions]="{standalone: true}" required>
         <mat-datepicker-toggle matSuffix [for]="calibrationDue"></mat-datepicker-toggle>
         <mat-datepicker #calibrationDue></mat-datepicker>
       </mat-form-field>
-
-      file
-      <div ng2FileDrop [uploader]="uploader">
+      
+      <div ng2FileDrop [uploader]="uploader" class="generic-file-drop">
         <input type="file" ng2FileSelect [uploader]="uploader" multiple />
       </div>
-
+      <button class="remove-list-button" mat-icon-button (click)="removeCalibration(calibration)">
+        <i class="material-icons">clear</i>
+      </button>
     </li>
   </ul>
 
@@ -67,8 +72,6 @@
 
 
 
-  <div class="button-row">
-    <button mat-raised-button color="primary" (click)="submit();">Save</button>
-  </div>
+  
 
 </div>
