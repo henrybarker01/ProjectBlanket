@@ -1,9 +1,8 @@
 <div class="dashboard">
   <div class="dashboard-header">
     <h2>Dashboard</h2>
-     
     <mat-form-field class="widget-selector">
-      <mat-select placeholder="Available Widgets" [(ngModel)]="selectedValue" (ngModelChange)="addWidget($event)" name="widget" >
+      <mat-select placeholder="Available Widgets" [(ngModel)]="selectedValue" (ngModelChange)="addWidget($event)" name="widget">
         <mat-option *ngFor="let widget of availableWidgets" [value]="widget.name">
           {{widget.description}}
         </mat-option>
@@ -13,7 +12,13 @@
   </div>
   <gridster [options]="options">
     <gridster-item [item]="item" *ngFor="let item of addedWidgets">
-      <quote-widget *ngIf="item.name==='quoteWidget'" > </quote-widget>
+      <div class="widget-header">
+        <h4>{{item.description}}</h4>
+        <button class="remove-widget-button" mat-icon-button (click)="removeItem(item)">
+          <i class="material-icons">clear</i>
+        </button>
+      </div>
+      <quote-widget *ngIf="item.name==='quoteWidget'"> </quote-widget>
       <calibtation-due-widget *ngIf="item.name==='calibrationWidget'"></calibtation-due-widget>
       <quote-widget *ngIf="item.name==='testAgain'"></quote-widget>
     </gridster-item>

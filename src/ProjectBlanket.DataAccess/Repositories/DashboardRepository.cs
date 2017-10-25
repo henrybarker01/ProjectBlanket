@@ -21,14 +21,15 @@ namespace ProjectBlanket.DataAccess.Repositories
         public async Task<List<Widget>> SaveDashboard(List<Widget> widgetList, Guid userid)
         {
             var widgetsToDelete = await _dbContext.Widget.Where(x => x.UserId == userid).ToListAsync();
-             _dbContext.Widget.RemoveRange(widgetsToDelete);
-             
+            if (widgetsToDelete.Any())
+                _dbContext.Widget.RemoveRange(widgetsToDelete);
+
             foreach (var widget in widgetList)
             {
                 widget.UserId = userid;
-               }
+            }
             _dbContext.Widget.AddRange(widgetList);
-           await  _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
             return widgetList;
         }
 
@@ -37,5 +38,5 @@ namespace ProjectBlanket.DataAccess.Repositories
 
     }
 
-    
+
 }

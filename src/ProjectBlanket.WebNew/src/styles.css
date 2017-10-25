@@ -180,6 +180,17 @@
   float: right;
   margin-right: 90px;
 }
+.widget-header {
+  margin-top: -10px;
+  background-color: #e0dede;
+  padding: 5px 5px 0 5px;
+}
+.widget-header > h4 {
+  display: inline-block;
+}
+.widget-header > .remove-widget-button {
+  float: right;
+}
 .page-header {
   margin-top: -15px;
   width: 99.5%;
@@ -219,7 +230,7 @@
   width: 300px;
 }
 .calibration-container {
-  width: 40%;
+  width: 740px;
   position: relative;
   margin: 0 0 0 20px;
 }
@@ -235,6 +246,40 @@
 .calibration-container .add-list-button .material-icons {
   font-size: 28px;
   color: #46ad2d;
+}
+.calibration-container .calibration-list {
+  padding: 0 0 0 5px;
+}
+.calibration-container .calibration-list > li > .input {
+  margin: 0;
+}
+.calibration-container .calibration-list > li > .generic-file-drop {
+  display: inline;
+  padding: 15px 0 0 15px;
+}
+.calibration-container .calibration-list > li > .generic-file-drop > .upload-button {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.calibration-container .calibration-list > li > .generic-file-drop > label {
+  cursor: pointer;
+  line-height: 1.5em;
+  vertical-align: text-top;
+  font-size: 28px;
+}
+.calibration-container .calibration-list > li > .generic-file-drop > .file-download {
+  color: #4685ba;
+  font-size: 28px;
+  line-height: 1.5em;
+  vertical-align: text-top;
+}
+.calibration-container .calibration-list > li > .generic-file-drop > .file-download > i {
+  font-size: 28px;
+  line-height: 1.5em;
 }
 .remove-list-button {
   color: #ff0000;

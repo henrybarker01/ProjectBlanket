@@ -1,9 +1,10 @@
 @import (reference) "../../palette";
 
 .calibration-container {
-  width: 40%;
+  width: 740px;
   position: relative;
-  margin:0 0 0 20px;
+  margin: 0 0 0 20px;
+
   & > h3 {
     margin: 5px 0 0 10px;
     display: inline;
@@ -21,7 +22,49 @@
     }
   }
 
- 
+  .calibration-list {
+    padding: 0 0 0 5px;
+
+
+    & > li {
+      & > .input {
+        margin: 0;
+      }
+
+      & > .generic-file-drop {
+        display: inline;
+        padding: 15px 0 0 15px;
+
+        & > .upload-button {
+          width: 0.1px;
+          height: 0.1px;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+          z-index: -1;
+        }
+
+        & > label {
+          cursor: pointer;
+          line-height: 1.5em;
+          vertical-align: text-top;
+          font-size: 28px;
+        }
+
+        & > .file-download {
+          color: @text-blue;
+          font-size: 28px;
+          line-height: 1.5em;
+          vertical-align: text-top;
+
+          & > i {
+            font-size: 28px;
+            line-height: 1.5em;
+          }
+        }
+      }
+    }
+  }
 }
 
 .remove-list-button {

@@ -32,15 +32,10 @@ export class DashboardComponent {//implements OnInit {
 
     this.options = {
       itemChangeCallback: (item: any) => {
-        var index = this.addedWidgets.indexOf((x) => {
-          return x.name === item.name;
-        });
-        this.addedWidgets.splice(index, 1);
-        this.addedWidgets.push(item);
         this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
       },
       itemResizeCallback: () => {
-        this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
+       // this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
       },
 
       gridType: 'fit',
@@ -49,10 +44,10 @@ export class DashboardComponent {//implements OnInit {
       margin: 5,
       outerMargin: true,
       mobileBreakpoint: 640,
-      minCols: 1,
-      maxCols: 100,
-      minRows: 1,
-      maxRows: 100,
+      minCols: 4,
+      maxCols: 10,
+      minRows: 4,
+      maxRows: 10,
       maxItemCols: 100,
       minItemCols: 1,
       maxItemRows: 100,
@@ -149,6 +144,7 @@ export class DashboardComponent {//implements OnInit {
   removeItem(item: any) {
     this.addedWidgets.splice(this.addedWidgets.indexOf(item), 1);
     this.availableWidgets.push(item);
+    this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
   }
 
 

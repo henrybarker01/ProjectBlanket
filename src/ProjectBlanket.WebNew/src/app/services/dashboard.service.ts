@@ -15,13 +15,13 @@ export class DashboardService {
   put(model: any): Observable<any> {
  return this._http.put(Global.BASE_USER_ENDPOINT + 'dashboard/add', model)
    .map(data => _.values(data))
-      .catch(this.handleError);
+     // .catch(this.handleError);
   }
 
   saveDashboard(model: any): Observable<any> {
  return this._http.post(Global.BASE_USER_ENDPOINT + 'dashboard/saveDashboard', model)
    .map(data => _.values(data))
-      .catch(this.handleError);
+     // .catch(this.handleError);
   }
 
   getLayout() {
@@ -29,7 +29,7 @@ export class DashboardService {
   }
 
   private handleError(error: Response) {
-    console.error(error);
-    return Observable.throw(error || 'Server error'); 
+    
+   // return Observable.throw(error || 'Server error'); 
   }
 }
