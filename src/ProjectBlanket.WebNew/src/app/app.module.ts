@@ -13,7 +13,9 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatMenuModule,
-  MatSelectModule
+  MatSelectModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 
@@ -65,6 +67,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     MatNativeDateModule,
     MatMenuModule,
     MatSelectModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatProgressSpinnerModule,
     FormsModule,
     FileUploadModule,
     HttpClientModule],//Ng2Bs3ModalModule   

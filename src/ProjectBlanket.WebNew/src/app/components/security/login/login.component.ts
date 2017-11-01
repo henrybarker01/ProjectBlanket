@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from '../../../services/alert.service';
-
+ 
 
 @Component({
     moduleId: module.id,
@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit {
     loading = false;
     returnUrl: string;
     loginForm: FormGroup;
+   color = 'primary';
+   mode = 'indeterminate';
+    
 
     constructor(
         private route: ActivatedRoute,
@@ -29,6 +32,10 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['']
         });
+
+      this.color = 'primary';
+      this.mode = 'indeterminate';
+     
     }
 
     login() {

@@ -1,13 +1,16 @@
 <div class="dashboard">
   <div class="dashboard-header">
-    <h2>Dashboard</h2>
-    <mat-form-field class="widget-selector">
-      <mat-select placeholder="Available Widgets" [(ngModel)]="selectedValue" (ngModelChange)="addWidget($event)" name="widget">
-        <mat-option *ngFor="let widget of availableWidgets" [value]="widget.name">
-          {{widget.description}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div><h2>Dashboard</h2></div>
+    <div>
+      <mat-form-field class="widget-selector">
+        <mat-select placeholder="Available Widgets" [(ngModel)]="selectedValue" (ngModelChange)="addWidget($event)" name="widget">
+          <mat-option *ngFor="let widget of availableWidgets" [value]="widget.name">
+            {{widget.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
 
   </div>
   <gridster [options]="options">

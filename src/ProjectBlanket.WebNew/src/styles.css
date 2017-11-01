@@ -86,6 +86,7 @@
   padding: 0;
   position: absolute;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
 }
@@ -120,12 +121,23 @@
 .login-form .login-section > form > div > input:focus {
   border: 1px solid #b5b2b2;
 }
-.login-form .image {
+.login-form .loading-spinner {
   position: absolute;
-  left: 280px;
-  right: 0;
+  top: 250px;
+  left: 50px;
+}
+.image-container {
+  position: absolute;
   top: 0;
-  background-color: ActiveCaption;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  background-color: aquamarine;
+  z-index: 9999999;
+}
+.image-container .login-image {
+  width: 100%;
+  height: 100%;
 }
 .side-list-form > input {
   width: 215px;
@@ -176,9 +188,12 @@
   color: #636262;
   font-weight: bold;
 }
+.dashboard .dashboard-header {
+  display: flex;
+  justify-content: space-between;
+}
 .dashboard .dashboard-header .widget-selector {
-  float: right;
-  margin-right: 90px;
+  margin: 10px 50px 0 0;
 }
 .widget-header {
   margin-top: -10px;

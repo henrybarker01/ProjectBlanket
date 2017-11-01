@@ -17,7 +17,13 @@
       </div>
     </form>
   </div>
-  <div class="image">
-    <!--<img src="../../../../assets/images/2ade2df3-b111-475d-89ab-3a9a01f418d1-1.jpg" />-->
+  <mat-progress-spinner *ngIf="loading"
+                        class="loading-spinner"
+                        [color]="color"
+                        [mode]="mode"
+                        [value]="value">
+  </mat-progress-spinner>
+  <div class="image-container">
+    <img class="login-image" src="../../../../assets/images/LoginImage.jpg" />
   </div>
 </div>
