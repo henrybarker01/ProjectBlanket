@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ProjectBlanket.DataAccess.Contracts.Interfaces;
 using ProjectBlanket.DataAccess.DbContext;
 using ProjectBlanket.DataAccess.Entities.Entities;
+using ProjectBlanket.Service.Contracts.Models.Equipment;
 
 namespace ProjectBlanket.DataAccess.Repositories
 {
@@ -36,14 +37,19 @@ namespace ProjectBlanket.DataAccess.Repositories
             return equipment;
         }
 
-        public async Task<List<Equipment>> GetCalibrationsDueInSixMonths()
+        public async Task<List<EquipmentCalibrationDateModel>> GetCalibrationsDueInSixMonths()
         {
-            var ComparisonDate = DateTime.Now.AddMonths(-6);
+           var comparisonDate = DateTime.Now.AddMonths(-6);
             return await (from equipment in _dbContext.Equipment
                           join calibration in _dbContext.Calibration on equipment.Id equals calibration.EquipmentId
-                          where calibration.CalibrationDue >= ComparisonDate
+                          where calibration.CalibrationDue >= comparisonDate
                           orderby calibration.CalibrationDue descending
-                          select equipment).ToListAsync();
+                          select new EquipmentCalibrationDateModel
+                          {
+                              Id = equipment.Id,
+                              Name = equipment.Name,
+                              CalibrationDue = calibration.CalibrationDue
+                          }).ToListAsync();
         }
 
     }

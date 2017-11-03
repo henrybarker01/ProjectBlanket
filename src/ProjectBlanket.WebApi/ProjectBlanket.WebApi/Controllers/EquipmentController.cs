@@ -40,11 +40,11 @@ namespace ProjectBlanket.WebApi.Controllers
             (await _equipmentService.Add(Map<Equipment>(equipmentModel))).Id;
 
         [HttpGet, Route("getCalibrationsDueInSixMonths")]
-        public async Task<List<EquipmentModel>> GetCalibrationsDueInSixMonths()
+        public async Task<IHttpActionResult> GetCalibrationsDueInSixMonths()
         {
             var result = await _equipmentService.GetCalibrationsDueInSixMonths();
-        
-            return Map<List<EquipmentModel>>(result);
+            return Ok(result);
+
         }
     }
 }

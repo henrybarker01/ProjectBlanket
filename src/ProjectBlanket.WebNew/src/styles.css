@@ -81,6 +81,20 @@
 .page-content.fit-in {
   left: 255px;
 }
+.top-navigation {
+  height: 80px;
+  background-color: #fefcff;
+  display: inline-flex;
+  width: 100%;
+  border-bottom: 1px solid #f3f2f3;
+}
+.top-navigation .logo {
+  margin: 10px 20px 10px 20px;
+  width: 170px;
+}
+.top-navigation .navbar .container-fluid .nav .nav-item {
+  color: #636262;
+}
 .login-form {
   margin: 0;
   padding: 0;
@@ -191,20 +205,40 @@
 .dashboard .dashboard-header {
   display: flex;
   justify-content: space-between;
+  background-color: #3c424f;
+  color: white;
+  padding: 0 0 0 15px;
 }
 .dashboard .dashboard-header .widget-selector {
   margin: 10px 50px 0 0;
 }
+.dashboard .dashboard-header .widget-selector .mat-input-wrapper .mat-input-flex .mat-input-infix .mat-select .mat-select-trigger .mat-select-arrow-wrapper .mat-select-arrow {
+  color: white !important;
+}
+.dashboard .dashboard-header .widget-selector .mat-input-wrapper .mat-input-flex .mat-input-infix .mat-input-placeholder-wrapper .mat-input-placeholder {
+  color: white !important;
+}
+.dashboard > gridster {
+  background-color: #ECEDEF;
+}
 .widget-header {
   margin-top: -10px;
-  background-color: #e0dede;
-  padding: 5px 5px 0 5px;
+  background-color: #01A4CF;
+  padding: 10px 5px 0 10px;
+  height: 50px;
+  color: white;
 }
 .widget-header > h4 {
   display: inline-block;
 }
 .widget-header > .remove-widget-button {
   float: right;
+}
+.widget-body {
+  margin: 15px;
+  color: #636262;
+  font-family: 'Segoe UI';
+  font-weight: normal;
 }
 .page-header {
   margin-top: -15px;

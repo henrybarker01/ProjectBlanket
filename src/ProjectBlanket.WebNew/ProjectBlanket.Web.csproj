@@ -86,6 +86,9 @@
     <Content Include="src\assets\images\2ade2df3-b111-475d-89ab-3a9a01f418d1-1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\assets\images\BolengLogoTransparent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="src\assets\images\LoginImage.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

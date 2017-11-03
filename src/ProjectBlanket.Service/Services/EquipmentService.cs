@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ProjectBlanket.DataAccess.Contracts.Interfaces;
 using ProjectBlanket.DataAccess.Entities.Entities;
 using ProjectBlanket.Service.Contracts.Interfaces;
+using ProjectBlanket.Service.Contracts.Models.Equipment;
 
 namespace ProjectBlanket.Service.Services
 {
@@ -26,7 +27,7 @@ namespace ProjectBlanket.Service.Services
        public async Task<Equipment> Add(Equipment equipment) =>
            await _equipmentRepository.Add(equipment);
 
-       public async Task<List<Equipment>> GetCalibrationsDueInSixMonths() =>
+       public async Task<List<EquipmentCalibrationDateModel>> GetCalibrationsDueInSixMonths() =>
            await _equipmentRepository.GetCalibrationsDueInSixMonths();
 
    }

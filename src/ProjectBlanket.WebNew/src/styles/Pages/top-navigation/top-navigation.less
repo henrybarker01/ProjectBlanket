@@ -1,3 +1,26 @@
-.top-navigation{
+@import (reference) "../../palette";
 
+.top-navigation {
+  height: 80px;
+  background-color: #fefcff;
+  display: inline-flex;
+  width: 100%;
+  border-bottom: 1px solid #f3f2f3;
+
+  .logo {
+    margin: 10px 20px 10px 20px;
+    width: 170px;
+  }
+
+  .navbar {
+    // margin:0 0 0 20px;
+    .container-fluid {
+      .nav {
+        .nav-item {
+          color: @text-dark-gray;
+        }
+      }
+    }
+  }
 }
+
