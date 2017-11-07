@@ -122,29 +122,9 @@
   <ItemGroup>
     <Compile Include="DbContext\LazyDbContextWrapper.cs" />
     <Compile Include="DbContext\ProjectBlanketContext.cs" />
-    <Compile Include="Migrations\201708241830477_Initial.cs" />
-    <Compile Include="Migrations\201708241830477_Initial.Designer.cs">
-      <DependentUpon>201708241830477_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709191849362_EquipmentAndCalibration.cs" />
-    <Compile Include="Migrations\201709191849362_EquipmentAndCalibration.Designer.cs">
-      <DependentUpon>201709191849362_EquipmentAndCalibration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709192004294_FixQuoteNumber.cs" />
-    <Compile Include="Migrations\201709192004294_FixQuoteNumber.Designer.cs">
-      <DependentUpon>201709192004294_FixQuoteNumber.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710091756161_EquipmentAndCalibrations.cs" />
-    <Compile Include="Migrations\201710091756161_EquipmentAndCalibrations.Designer.cs">
-      <DependentUpon>201710091756161_EquipmentAndCalibrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710091846024_UpdateCalibrationAddName.cs" />
-    <Compile Include="Migrations\201710091846024_UpdateCalibrationAddName.Designer.cs">
-      <DependentUpon>201710091846024_UpdateCalibrationAddName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710130628540_AddDashboardWidgetEntities.cs" />
-    <Compile Include="Migrations\201710130628540_AddDashboardWidgetEntities.Designer.cs">
-      <DependentUpon>201710130628540_AddDashboardWidgetEntities.cs</DependentUpon>
+    <Compile Include="Migrations\201711070943034_Initial.cs" />
+    <Compile Include="Migrations\201711070943034_Initial.Designer.cs">
+      <DependentUpon>201711070943034_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Module\ProjectBlanketContextModule.cs" />
@@ -191,23 +171,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708241830477_Initial.resx">
-      <DependentUpon>201708241830477_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709191849362_EquipmentAndCalibration.resx">
-      <DependentUpon>201709191849362_EquipmentAndCalibration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709192004294_FixQuoteNumber.resx">
-      <DependentUpon>201709192004294_FixQuoteNumber.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710091756161_EquipmentAndCalibrations.resx">
-      <DependentUpon>201710091756161_EquipmentAndCalibrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710091846024_UpdateCalibrationAddName.resx">
-      <DependentUpon>201710091846024_UpdateCalibrationAddName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710130628540_AddDashboardWidgetEntities.resx">
-      <DependentUpon>201710130628540_AddDashboardWidgetEntities.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711070943034_Initial.resx">
+      <DependentUpon>201711070943034_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

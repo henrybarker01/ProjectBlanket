@@ -14,11 +14,11 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor() { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        //request = request.clone({
-        //    setHeaders: {
-        //        Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
-        //    }
-        //});
+         request = request.clone({
+             setHeaders: {
+                 Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+             }
+         });
         return next.handle(request);
     }
 }

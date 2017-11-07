@@ -7,13 +7,13 @@ namespace ProjectBlanket.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-beta1-60406")]
-    public sealed partial class FixQuoteNumber : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FixQuoteNumber));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201709192004294_FixQuoteNumber"; }
+            get { return "201711070943034_Initial"; }
         }
         
         string IMigrationMetadata.Source
