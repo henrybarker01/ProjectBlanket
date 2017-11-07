@@ -7,11 +7,9 @@ import { UserRegistrationInfo } from '../models/security/user-registration-info'
 import { Global } from '../shared/global';
 import { HttpClient } from "@angular/common/http";
 
-
 @Injectable()
 export class UserService {
   constructor(private _http: HttpClient) { }
-
   
   getById(id: number) {
     //return this._http.get('/api/users/' + id, this.jwt()).map(response => response);
@@ -28,12 +26,9 @@ export class UserService {
       return new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
     }
   }
-  
-   
 
   private handleError(error: Response) {
     console.error(error);
     return Observable.throw(error || 'Server error');
   }
-
 }

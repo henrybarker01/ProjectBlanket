@@ -1,10 +1,8 @@
 <div class="widget-body">
-  
   <span> The following equipment is due for calibration:</span>
   <ul>
     <li *ngFor="let equipment of equipmentList">
       <span> {{equipment.name}} expires on {{equipment.calibrationDue | date : 'dd/MMM/yyyy'}}</span>
-
     </li>
   </ul>
 </div>

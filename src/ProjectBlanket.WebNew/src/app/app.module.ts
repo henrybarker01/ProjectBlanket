@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { routing } from './app.routing';
@@ -18,8 +17,6 @@ import {
   MatProgressSpinnerModule
 } from '@angular/material';
 
-
-//import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
 import { FileUploadModule } from 'ng2-file-upload';
 
 //components
@@ -72,7 +69,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     MatProgressSpinnerModule,
     FormsModule,
     FileUploadModule,
-    HttpClientModule],//Ng2Bs3ModalModule   
+    HttpClientModule],
 
   declarations: [AppComponent,
     TopNavigationComponent,
@@ -86,9 +83,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     QuoteWidget,
     HeaderComponent,
     CalibrationDueWidget,
-    //FileDropDirective,
-    //FileSelectDirective,
-    // CardHoverDirective,
     EquipmentComponent],
 
   providers: [{ provide: APP_BASE_HREF, useValue: '/' },
@@ -106,9 +100,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     DashboardService
   ],
 
-
-  bootstrap: [AppComponent],
-  //entryComponents: [QuoteWidget]
-
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

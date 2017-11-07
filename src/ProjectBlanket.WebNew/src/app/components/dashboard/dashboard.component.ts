@@ -9,13 +9,11 @@ import * as _ from 'lodash';
   templateUrl: 'dashboard.component.html'
 })
 
-export class DashboardComponent {//implements OnInit {
-
+export class DashboardComponent {
   options: GridsterConfig;
   availableWidgets: Array<GridsterItem>;
   @Input() addedWidgets: Array<GridsterItem>;
   _dashboardService: DashboardService;
-
 
   constructor(private dashboardService: DashboardService) {
     this._dashboardService = dashboardService;

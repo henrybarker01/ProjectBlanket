@@ -4,7 +4,6 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from '../../../services/alert.service';
  
-
 @Component({
     moduleId: module.id,
     templateUrl: 'login.component.html'
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
    color = 'primary';
    mode = 'indeterminate';
     
-
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -35,8 +33,7 @@ export class LoginComponent implements OnInit {
 
       this.color = 'primary';
       this.mode = 'indeterminate';
-     
-    }
+     }
 
     login() {
         this.loading = true;

@@ -35,8 +35,5 @@ namespace ProjectBlanket.DataAccess.Repositories
 
         public async Task<List<Widget>> GetDashboardWidgetsByUserId(Guid userId) =>
             await _dbContext.Widget.Where(x => x.UserId == userId).ToListAsync();
-
     }
-
-
 }
