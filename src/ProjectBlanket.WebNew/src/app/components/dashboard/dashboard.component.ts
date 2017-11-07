@@ -1,10 +1,7 @@
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
-import { Component, OnInit, OnChanges, ComponentFactoryResolver, ViewContainerRef, NgModule, Input, ComponentFactory, ComponentRef, ChangeDetectorRef, ViewChild, Output, EventEmitter } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { DashboardService } from '../../services/dashboard.service';
-import { Global } from '../../shared/global';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { BrowserModule } from '@angular/platform-browser'
 import * as _ from 'lodash';
 
 @Component({
@@ -28,14 +25,12 @@ export class DashboardComponent {//implements OnInit {
 
     this.addedWidgets = [];
 
-
-
     this.options = {
       itemChangeCallback: (item: any) => {
         this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
       },
       itemResizeCallback: () => {
-       // this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
+        // this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
       },
 
       gridType: 'fit',
@@ -113,20 +108,15 @@ export class DashboardComponent {//implements OnInit {
 
     this._dashboardService.getLayout().subscribe((data) => {
       this.addedWidgets = _.values(data);
-
       this.addedWidgets.forEach((widget) => {
-        var index = this.availableWidgets.indexOf((x) => {
+        var index = this.availableWidgets.map((x) => {
           return x.name === widget.name;
-        });
-        this.availableWidgets.splice(index, 1);
+        }).indexOf(true);
+        if (index > -1)
+          this.availableWidgets.splice(index, 1);
       });
     });
-
-
   }
-
-
-
 
   public saveDashboard() {
     this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
@@ -146,6 +136,4 @@ export class DashboardComponent {//implements OnInit {
     this.availableWidgets.push(item);
     this._dashboardService.saveDashboard(this.addedWidgets).subscribe((result) => { });
   }
-
-
 }
